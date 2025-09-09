@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us with Web3Forms</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100">
+    <div class="absolute top-8 left-4 sm:left-6 lg:left-8">
+            <a href="index.html" class="flex items-center text-black/80 hover:text-brandGreen transition-colors duration-300 group">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 mr-2 transform group-hover:-translate-x-1 transition-transform duration-300">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+                </svg>
+                <span class="text-sm font-medium">Back to Home</span>
+            </a>
+        </div>
+    <section id="contact" class="py-12 bg-gray-100 flex justify-center items-center">
+        <div class="container mx-auto px-4 w-full md:w-2/3 lg:w-1/2">
+            <div class="bg-white shadow-md rounded border-2 border-solid border-[#144f6d] rounded-lg p-5 w-full">
+                <h3 class="text-3xl mb-8 text-[#144f6d] p-4 text-center">Contact Us</h3>
+                <form id="contactForm" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <!-- Web3Forms Access Key and Settings -->
+                    <input type="hidden" name="access_key" value="bb4992b8-c562-461b-a8da-5aa68704378a">
+                    <input type="hidden" name="subject" value="New Contact Message from Website">
+                    <input type="hidden" name="from_name" value="Your Website Name">
+                    
+                    <div>
+                        <label for="name" class="block text-gray-700 font-semibold mb-2">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required
+                            class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-[#144f6d] focus:border-[#144f6d]">
+                        <div id="nameValidation" class="hidden text-red-600 text-sm mt-1">Please enter your name.</div>
+                    </div>
+                    <div>
+                        <label for="email" class="block text-gray-700 font-semibold mb-2">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required
+                            class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-[#144f6d] focus:border-[#144f6d]">
+                        <div id="emailValidation" class="hidden text-red-600 text-sm mt-1">Please enter a valid email address.</div>
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label for="subject" class="block text-gray-700 font-semibold mb-2">Subject</label>
+                        <input type="text" id="subject" name="form_subject" placeholder="Enter the subject" required
+                            class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-[#144f6d] focus:border-[#144f6d]">
+                        <div id="subjectValidation" class="hidden text-red-600 text-sm mt-1">Please enter the subject.</div>
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label for="message" class="block text-gray-700 font-semibold mb-2">Message</label>
+                        <textarea id="message" name="message" placeholder="Enter your message" rows="5" required
+                            class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-[#144f6d] focus:border-[#144f6d]"></textarea>
+                        <div id="messageValidation" class="hidden text-red-600 text-sm mt-1">Please enter your message.</div>
+                    </div>
+                    <div class="sm:col-span-2">
+                        <button type="submit" id="submitBtn"
+                            class="w-full text-white font-semibold py-2 px-4 rounded-md hover:bg-green-600 transition duration-300" style="background-color: #144f6d;">Submit</button>
+                    </div>
+                    <!-- Message to show form submission status -->
+                    <p id="formResultMessage" class="sm:col-span-2 text-sm mt-2 hidden text-center"></p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Form and validation elements
+        const contactForm = document.getElementById('contactForm');
+        const nameInput = document.getElementById('name');
+        const nameValidation = document.getElementById('nameValidation');
+        const emailInput = document.getElementById('email');
+        const emailValidation = document.getElementById('emailValidation');
+        const subjectInput = document.getElementById('subject');
+        const subjectValidation = document.getElementById('subjectValidation');
+        const messageInput = document.getElementById('message');
+        const messageValidation = document.getElementById('messageValidation');
+        const resultMessage = document.getElementById('formResultMessage');
+        const submitBtn = document.getElementById('submitBtn');
+
+        // Client-side validation function
+        const validateInput = (input, validationElement, validationFunction) => {
+            if (!validationFunction(input.value.trim())) {
+                validationElement.classList.remove('hidden');
+                return false;
+            } else {
+                validationElement.classList.add('hidden');
+                return true;
+            }
+        };
+
+        const validateName = () => validateInput(nameInput, nameValidation, (name) => name !== '');
+        const validateEmail = () => validateInput(emailInput, emailValidation, (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email));
+        const validateSubject = () => validateInput(subjectInput, subjectValidation, (subject) => subject !== '');
+        const validateMessage = () => validateInput(messageInput, messageValidation, (message) => message !== '');
+
+        const validateForm = () => {
+            return validateName() && validateEmail() && validateSubject() && validateMessage();
+        };
+
+        // Form submission handler
+        contactForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // Run validation first
+            if (!validateForm()) {
+                resultMessage.textContent = "Please fill out all required fields correctly.";
+                resultMessage.className = "sm:col-span-2 text-sm mt-2 text-center text-red-600";
+                resultMessage.classList.remove('hidden');
+                return;
+            }
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            const formData = new FormData(contactForm);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+            
+            resultMessage.textContent = "";
+            resultMessage.classList.add('hidden');
+
+            fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: json
+                })
+                .then(async (response) => {
+                    let jsonResponse = await response.json();
+                    if (response.status == 200) {
+                        resultMessage.textContent = jsonResponse.message;
+                        resultMessage.className = "sm:col-span-2 text-sm mt-2 text-center text-green-600";
+                        contactForm.reset(); // Clear the form
+                    } else {
+                        console.log(response);
+                        resultMessage.textContent = jsonResponse.message;
+                        resultMessage.className = "sm:col-span-2 text-sm mt-2 text-center text-red-600";
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    resultMessage.textContent = "Something went wrong! Please try again.";
+                     resultMessage.className = "sm:col-span-2 text-sm mt-2 text-center text-red-600";
+                })
+                .finally(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit';
+                    resultMessage.classList.remove('hidden');
+                     setTimeout(() => {
+                        resultMessage.classList.add('hidden');
+                    }, 5000);
+                });
+        });
+
+        // Add real-time validation listeners
+        const inputs = [nameInput, emailInput, subjectInput, messageInput];
+        inputs.forEach(input => {
+            input.addEventListener('input', function () {
+                switch (input.id) {
+                    case 'name': validateName(); break;
+                    case 'email': validateEmail(); break;
+                    case 'subject': validateSubject(); break;
+                    case 'message': validateMessage(); break;
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

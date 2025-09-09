@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Avanzo - Cybersecurity Solutions</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+ 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Raleway:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <style>
+  
+      body {
+        font-family: "Raleway", sans-serif;
+        overflow-x: hidden;
+      }
+      .font-sans {
+        font-family: "Inter", sans-serif;
+      }
+      .animated-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        overflow: hidden;
+      }
+      .line {
+        position: absolute;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(148, 163, 184, 0.3),
+          transparent
+        );
+        animation: flow 15s infinite linear;
+      }
+      .line:nth-child(1) {
+        width: 200px;
+        height: 2px;
+        top: 10%;
+        left: -200px;
+        animation-delay: 0s;
+        animation-duration: 12s;
+      }
+      .line:nth-child(2) {
+        width: 150px;
+        height: 1px;
+        top: 25%;
+        left: -150px;
+        animation-delay: 2s;
+        animation-duration: 18s;
+      }
+      .line:nth-child(3) {
+        width: 300px;
+        height: 1px;
+        top: 40%;
+        left: -300px;
+        animation-delay: 4s;
+        animation-duration: 14s;
+      }
+      .line:nth-child(4) {
+        width: 180px;
+        height: 2px;
+        top: 55%;
+        left: -180px;
+        animation-delay: 6s;
+        animation-duration: 16s;
+      }
+      .line:nth-child(5) {
+        width: 250px;
+        height: 1px;
+        top: 70%;
+        left: -250px;
+        animation-delay: 8s;
+        animation-duration: 20s;
+      }
+      .line:nth-child(6) {
+        width: 120px;
+        height: 1px;
+        top: 85%;
+        left: -120px;
+        animation-delay: 10s;
+        animation-duration: 13s;
+      }
+      .line:nth-child(7) {
+        width: 220px;
+        height: 1px;
+        top: 15%;
+        left: -220px;
+        animation-delay: 3s;
+        animation-duration: 17s;
+      }
+      .line:nth-child(8) {
+        width: 160px;
+        height: 2px;
+        top: 35%;
+        left: -160px;
+        animation-delay: 7s;
+        animation-duration: 15s;
+      }
+      .line:nth-child(9) {
+        width: 280px;
+        height: 1px;
+        top: 65%;
+        left: -280px;
+        animation-delay: 1s;
+        animation-duration: 19s;
+      }
+      .line:nth-child(10) {
+        width: 190px;
+        height: 1px;
+        top: 80%;
+        left: -190px;
+        animation-delay: 5s;
+        animation-duration: 11s;
+      }
+
+      @keyframes flow {
+        0% {
+          transform: translateX(0) rotate(0deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 0.6;
+        }
+        90% {
+          opacity: 0.6;
+        }
+        100% {
+          transform: translateX(calc(100vw + 300px)) rotate(5deg);
+          opacity: 0;
+        }
+      }
+
+      .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: rgba(99, 102, 241, 0.3);
+        border-radius: 50%;
+        animation: float 20s infinite linear;
+      }
+      .particle:nth-child(11) {
+        top: 20%;
+        left: -10px;
+        animation-delay: 0s;
+        animation-duration: 25s;
+      }
+      .particle:nth-child(12) {
+        top: 60%;
+        left: -10px;
+        animation-delay: 5s;
+        animation-duration: 30s;
+      }
+      .particle:nth-child(13) {
+        top: 45%;
+        left: -10px;
+        animation-delay: 10s;
+        animation-duration: 22s;
+      }
+      .particle:nth-child(14) {
+        top: 75%;
+        left: -10px;
+        animation-delay: 15s;
+        animation-duration: 28s;
+      }
+      .particle:nth-child(15) {
+        top: 30%;
+        left: -10px;
+        animation-delay: 8s;
+        animation-duration: 26s;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateX(0) translateY(0);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateX(calc(100vw + 20px)) translateY(-100px);
+          opacity: 0;
+        }
+      }
+
+      .content-overlay {
+        position: relative;
+        z-index: 1;
+      }
+
+      
+      .radial-gradient-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -2;
+        background: radial-gradient(
+          125% 125% at 50% 90%,
+          #fff 40%,
+          #475569 100%
+        );
+        pointer-events: none;
+      }
+      .top-fade-grid {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background-image: linear-gradient(
+            to right,
+            #e2e8f0 1px,
+            transparent 1px
+          ),
+          linear-gradient(to bottom, #e2e8f0 1px, transparent 1px);
+        background-size: 20px 30px;
+        -webkit-mask-image: radial-gradient(
+          ellipse 70% 60% at 50% 0%,
+          #000 60%,
+          transparent 100%
+        );
+        mask-image: radial-gradient(
+          ellipse 70% 60% at 50% 0%,
+          #000 60%,
+          transparent 100%
+        );
+        pointer-events: none;
+      }
+
+  
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+      .is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .hover-lift {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .hover-lift:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 24px rgba(100, 116, 139, 0.2);
+      }
+
+      
+
+      
+      .box {
+        animation-duration: 20s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
+
+      .animate-box-1 {
+        top: 10%;
+        left: 10%;
+        animation-name: float-box-1;
+      }
+
+      .animate-box-2 {
+        top: 20%;
+        right: 15%;
+        animation-name: float-box-2;
+      }
+
+      .animate-box-3 {
+        top: 60%;
+        left: 20%;
+        animation-name: float-box-3;
+      }
+
+      .animate-box-4 {
+        top: 30%;
+        right: 25%;
+        animation-name: float-box-4;
+      }
+
+      .animate-box-5 {
+        top: 70%;
+        left: 60%;
+        animation-name: float-box-5;
+      }
+
+      .animate-box-6 {
+        top: 15%;
+        left: 70%;
+        animation-name: float-box-6;
+      }
+
+      .animate-box-7 {
+        top: 80%;
+        right: 10%;
+        animation-name: float-box-7;
+      }
+
+      .animate-box-8 {
+        top: 45%;
+        left: 40%;
+        animation-name: float-box-8;
+      }
+
+      .animate-box-9 {
+        top: 25%;
+        right: 60%;
+        animation-name: float-box-9;
+      }
+
+      .animate-box-10 {
+        top: 55%;
+        left: 80%;
+        animation-name: float-box-10;
+      }
+
+      @keyframes float-box-1 {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        25% {
+          transform: translate(20px, -20px) rotate(90deg);
+        }
+        50% {
+          transform: translate(0, -40px) rotate(180deg);
+        }
+        75% {
+          transform: translate(-20px, -20px) rotate(270deg);
+        }
+      }
+
+      @keyframes float-box-2 {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        25% {
+          transform: translate(-30px, 10px) rotate(-90deg);
+        }
+        50% {
+          transform: translate(-60px, 0) rotate(-180deg);
+        }
+        75% {
+          transform: translate(-30px, -10px) rotate(-270deg);
+        }
+      }
+
+      @keyframes float-box-3 {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        25% {
+          transform: translate(25px, 15px) rotate(45deg);
+        }
+        50% {
+          transform: translate(50px, 30px) rotate(90deg);
+        }
+        75% {
+          transform: translate(25px, 15px) rotate(135deg);
+        }
+      }
+
+      @keyframes float-box-4 {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        25% {
+          transform: translate(-15px, -25px) rotate(-45deg);
+        }
+        50% {
+          transform: translate(-30px, -50px) rotate(-90deg);
+        }
+        75% {
+          transform: translate(-15px, -25px) rotate(-135deg);
+        }
+      }
+
+      @keyframes float-box-5 {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        25% {
+          transform: translate(20px, -15px) rotate(60deg);
+        }
+        50% {
+          transform: translate(40px, -30px) rotate(120deg);
+        }
+        75% {
+          transform: translate(20px, -15px) rotate(180deg);
+        }
+      }
+
+      @keyframes float-box-6 {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        25% {
+          transform: translate(-20px, 20px) rotate(-60deg);
+        }
+        50% {
+          transform: translate(-40px, 40px) rotate(-120deg);
+        }
+        75% {
+          transform: translate(-20px, 20px) rotate(-180deg);
+        }
+      }
+
+      @keyframes float-box-7 {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        25% {
+          transform: translate(15px, -25px) rotate(30deg);
+        }
+        50% {
+          transform: translate(30px, -50px) rotate(60deg);
+        }
+        75% {
+          transform: translate(15px, -25px) rotate(90deg);
+        }
+      }
+
+      @keyframes float-box-8 {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        25% {
+          transform: translate(-25px, 15px) rotate(-30deg);
+        }
+        50% {
+          transform: translate(-50px, 30px) rotate(-60deg);
+        }
+        75% {
+          transform: translate(-25px, 15px) rotate(-90deg);
+        }
+      }
+
+      @keyframes float-box-9 {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        25% {
+          transform: translate(30px, -20px) rotate(75deg);
+        }
+        50% {
+          transform: translate(60px, -40px) rotate(150deg);
+        }
+        75% {
+          transform: translate(30px, -20px) rotate(225deg);
+        }
+      }
+
+      @keyframes float-box-10 {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        25% {
+          transform: translate(-35px, 25px) rotate(-75deg);
+        }
+        50% {
+          transform: translate(-70px, 50px) rotate(-150deg);
+        }
+        75% {
+          transform: translate(-35px, 25px) rotate(-225deg);
+        }
+      }
+      
+      @keyframes pulseGlow {
+        0%,
+        100% {
+          filter: drop-shadow(0 8px 18px rgba(15, 23, 42, 0.35)) brightness(1);
+        }
+        50% {
+          filter: drop-shadow(0 12px 24px rgba(14, 165, 233, 0.35))
+            brightness(1.05);
+        }
+      }
+      /* 3D Cyber Cube */
+      .cyber-3d-corner {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        pointer-events: none;
+      }
+      .cube-scene {
+        width: 200px;
+        height: 200px;
+        perspective: 900px;
+        filter: drop-shadow(0 8px 18px rgba(15, 23, 42, 0.35));
+        animation: pulseGlow 3.5s ease-in-out infinite;
+      }
+      .cube {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform-style: preserve-3d;
+        animation: rotateCube 14s linear infinite;
+      }
+      .cube__face {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: 1px solid rgba(59, 130, 246, 0.45);
+        background: linear-gradient(
+              90deg,
+              rgba(59, 130, 246, 0.2) 1px,
+              transparent 1px
+            )
+            0 0/14px 14px,
+          linear-gradient(rgba(14, 165, 233, 0.18) 1px, transparent 1px) 0 0/14px
+            14px,
+          radial-gradient(
+            60% 60% at 50% 40%,
+            rgba(56, 189, 248, 0.18),
+            rgba(59, 130, 246, 0.08)
+          );
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+      }
+      .cube__face--front {
+        transform: rotateY(0deg) translateZ(100px);
+      }
+      .cube__face--back {
+        transform: rotateY(180deg) translateZ(100px);
+      }
+      .cube__face--right {
+        transform: rotateY(90deg) translateZ(100px);
+      }
+      .cube__face--left {
+        transform: rotateY(-90deg) translateZ(100px);
+      }
+      .cube__face--top {
+        transform: rotateX(90deg) translateZ(100px);
+      }
+      .cube__face--bottom {
+        transform: rotateX(-90deg) translateZ(100px);
+      }
+      .cube-badge {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #e2e8f0;
+        font-size: 28px;
+        text-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
+        transform: translateZ(103px);
+      }
+      @keyframes rotateCube {
+        0% {
+          transform: rotateX(0deg) rotateY(0deg);
+        }
+        50% {
+          transform: rotateX(180deg) rotateY(180deg);
+        }
+        100% {
+          transform: rotateX(360deg) rotateY(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="animated-bg">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+    </div>
+
+    <!-- Radial Gradient Background from Bottom -->
+    <div class="radial-gradient-bg"></div>
+
+    <!-- Top Fade Grid Background -->
+    <div class="top-fade-grid"></div>
+
+    <div class="content-overlay">
+      <!-- Header Navigation -->
+      <header
+        class="border-b border-gray-200 bg-white/80 backdrop-blur-sm sticky top-0 z-50"
+      >
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex items-center justify-between h-16">
+            <div class="flex items-center space-x-8">
+              <a href="#">
+                <img
+                  class="h-12 w-auto"
+                  src="images/logo.png"
+                  alt="Avanzo Logo"
+                />
+              </a>
+              <nav class="hidden md:flex items-center space-x-8">
+                <a
+                  href="#"
+                  class="text-gray-600 hover:text-gray-900 font-medium transition-colors"
+                  >Home</a
+                >
+                <a
+                  href="https://avanzo.co.in/about.html"
+                  class="text-gray-600 hover:text-gray-900 font-medium transition-colors"
+                  >About</a
+                >
+                <a
+                  href="product.html"
+                  class="text-gray-600 hover:text-gray-900 font-medium transition-colors"
+                  >Our Products</a
+                >
+
+                <a
+                  href="client.html"
+                  class="text-gray-600 hover:text-gray-900 font-medium transition-colors"
+                  >Our Clients</a
+                >
+                <a
+                  href="contact.html"
+                  class="text-gray-600 hover:text-gray-900 font-medium transition-colors"
+                  >Contact</a
+                >
+              </nav>
+            </div>
+            <div class="hidden md:flex items-center space-x-6">
+              <a
+                href="#"
+                class="text-gray-600 hover:text-gray-900 font-medium transition-colors"
+                >Login</a
+              >
+              <a
+                href="#"
+                class="px-4 py-2 bg-[#144f6d] text-white text-sm font-semibold rounded-md hover:bg-[#144f6d] hover-lift"
+              >
+                Get Started
+              </a>
+            </div>
+            <div class="md:hidden">
+              <button class="p-2 rounded-md text-gray-600 hover:bg-gray-100">
+                <svg
+                  class="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Hero Section -->
+      <main>
+        <div
+          class="container mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 lg:py-32"
+        >
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="text-center lg:text-left animate-on-scroll is-visible">
+              <h1
+                class="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#144f6d] tracking-tight leading-tight"
+              >
+                Advanced Cybersecurity Solutions for Modern Enterprises
+              </h1>
+              <p class="mt-6 text-lg text-gray-600 font-sans">
+                Protect your digital assets with Avanzo's cutting-edge security
+                platform. Comprehensive threat detection, real-time monitoring,
+                and enterprise-grade protection.
+              </p>
+              <div
+                class="mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4"
+              >
+                <a
+                  href="consultation.html"
+                  class="w-full sm:w-auto px-6 py-3 bg-[#144f6d] text-white font-semibold rounded-md shadow-sm hover:bg-[#144f6d] hover-lift"
+                >
+Get Consultation                </a>
+                <a
+                  href="#"
+                  class="w-full sm:w-auto px-6 py-3 bg-white text-[#144f6d] font-semibold rounded-md border border-gray-300 shadow-sm hover:bg-gray-50 hover-lift"
+                >
+                  View Demo
+                </a>
+              </div>
+            </div>
+            <div
+              class="relative w-full h-64 sm:h-80 lg:h-96 overflow-hidden"
+              style="transition-delay: 200ms"
+            >
+              <div
+                class="absolute inset-0 from-black/20 via-transparent to-transparent rounded-xl"
+              ></div>
+
+              <div class="cyber-3d-corner">
+                <div class="cube-scene">
+                  <div class="cube">
+                    <div class="cube__face cube__face--front">
+                      <span class="cube-badge"
+                        ><i class="fa-solid fa-lock"></i
+                      ></span>
+                    </div>
+                    <div class="cube__face cube__face--back">
+                      <span class="cube-badge"
+                        ><i class="fa-solid fa-key"></i
+                      ></span>
+                    </div>
+                    <div class="cube__face cube__face--right">
+                      <span class="cube-badge"
+                        ><i class="fa-solid fa-shield"></i
+                      ></span>
+                    </div>
+                    <div class="cube__face cube__face--left">
+                      <span class="cube-badge"
+                        ><i class="fa-solid fa-bug-slash"></i
+                      ></span>
+                    </div>
+                    <div class="cube__face cube__face--top">
+                      <span class="cube-badge"
+                        ><i class="fa-solid fa-fingerprint"></i
+                      ></span>
+                    </div>
+                    <div class="cube__face cube__face--bottom">
+                      <span class="cube-badge"
+                        ><i class="fa-solid fa-network-wired"></i
+                      ></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Features Section -->
+      <section class="bg-gray-50/80 backdrop-blur-sm py-20 sm:py-24 lg:py-32">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto animate-on-scroll">
+            <h2
+              class="text-3xl sm:text-4xl font-bold text-[#1a4c8a] tracking-tight"
+            >
+              Complete Security Suite
+            </h2>
+            <p class="mt-4 text-lg text-gray-600 font-sans">
+              Everything you need to secure your enterprise infrastructure.
+            </p>
+          </div>
+          <div
+            class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            <!-- Cards with staggered animation -->
+            <div
+              class="bg-white/80 backdrop-blur-sm p-8 rounded-lg border border-gray-200 shadow-sm hover-lift animate-on-scroll"
+              style="transition-delay: 100ms"
+            >
+              <div class="inline-block p-3 bg-gray-100 rounded-md">
+                <i class="fa-solid fa-shield-halved text-2xl text-gray-700"></i>
+              </div>
+              <h3 class="mt-6 text-lg font-semibold text-gray-900">
+                Threat Detection
+              </h3>
+              <p class="mt-2 text-base text-gray-600 font-sans">
+                Advanced AI-powered threat detection and automated response.
+              </p>
+            </div>
+            <div
+              class="bg-white/80 backdrop-blur-sm p-8 rounded-lg border border-gray-200 shadow-sm hover-lift animate-on-scroll"
+              style="transition-delay: 200ms"
+            >
+              <div class="inline-block p-3 bg-gray-100 rounded-md">
+                <i class="fa-solid fa-lock text-2xl text-gray-700"></i>
+              </div>
+              <h3 class="mt-6 text-lg font-semibold text-gray-900">
+                Data Encryption
+              </h3>
+              <p class="mt-2 text-base text-gray-600 font-sans">
+                Military-grade encryption for data at rest and in transit.
+              </p>
+            </div>
+            <div
+              class="bg-white/80 backdrop-blur-sm p-8 rounded-lg border border-gray-200 shadow-sm hover-lift animate-on-scroll"
+              style="transition-delay: 300ms"
+            >
+              <div class="inline-block p-3 bg-gray-100 rounded-md">
+                <i class="fa-solid fa-chart-simple text-2xl text-gray-700"></i>
+              </div>
+              <h3 class="mt-6 text-lg font-semibold text-gray-900">
+                Analytics Dashboard
+              </h3>
+              <p class="mt-2 text-base text-gray-600 font-sans">
+                Comprehensive security analytics and detailed reporting.
+              </p>
+            </div>
+            <div
+              class="bg-white/80 backdrop-blur-sm p-8 rounded-lg border border-gray-200 shadow-sm hover-lift animate-on-scroll"
+              style="transition-delay: 400ms"
+            >
+              <div class="inline-block p-3 bg-gray-100 rounded-md">
+                <i class="fa-solid fa-users text-2xl text-gray-700"></i>
+              </div>
+              <h3 class="mt-6 text-lg font-semibold text-gray-900">
+                Access Management
+              </h3>
+              <p class="mt-2 text-base text-gray-600 font-sans">
+                Role-based access control with multi-factor authentication.
+              </p>
+            </div>
+            <div
+              class="bg-white/80 backdrop-blur-sm p-8 rounded-lg border border-gray-200 shadow-sm hover-lift animate-on-scroll"
+              style="transition-delay: 500ms"
+            >
+              <div class="inline-block p-3 bg-gray-100 rounded-md">
+                <i class="fa-solid fa-cloud text-2xl text-gray-700"></i>
+              </div>
+              <h3 class="mt-6 text-lg font-semibold text-gray-900">
+                Cloud Security
+              </h3>
+              <p class="mt-2 text-base text-gray-600 font-sans">
+                Automated compliance and security for cloud infrastructure.
+              </p>
+            </div>
+            <div
+              class="bg-white/80 backdrop-blur-sm p-8 rounded-lg border border-gray-200 shadow-sm hover-lift animate-on-scroll"
+              style="transition-delay: 600ms"
+            >
+              <div class="inline-block p-3 bg-gray-100 rounded-md">
+                <i class="fa-solid fa-headset text-2xl text-gray-700"></i>
+              </div>
+              <h3 class="mt-6 text-lg font-semibold text-gray-900">
+                24/7 Support
+              </h3>
+              <p class="mt-2 text-base text-gray-600 font-sans">
+                Round-the-clock expert support and incident response services.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Products Section -->
+      <section class="relative py-20 sm:py-24 lg:py-32 overflow-hidden">
+        <!-- Background Boxes Effect -->
+        <div class="absolute inset-0 w-full h-full bg-slate-900 z-0"></div>
+        <div
+          class="absolute inset-0 w-full h-full bg-slate-900 z-10 [mask-image:radial-gradient(transparent,white)] pointer-events-none"
+        ></div>
+
+        <!-- Animated Boxes -->
+        <div class="absolute inset-0 w-full h-full z-5">
+          <div
+            class="box absolute h-20 w-20 rounded-lg bg-slate-800 opacity-20 animate-box-1"
+          ></div>
+          <div
+            class="box absolute h-16 w-16 rounded-lg bg-slate-700 opacity-30 animate-box-2"
+          ></div>
+          <div
+            class="box absolute h-24 w-24 rounded-lg bg-slate-600 opacity-25 animate-box-3"
+          ></div>
+          <div
+            class="box absolute h-12 w-12 rounded-lg bg-slate-800 opacity-20 animate-box-4"
+          ></div>
+          <div
+            class="box absolute h-20 w-20 rounded-lg bg-slate-700 opacity-30 animate-box-5"
+          ></div>
+          <div
+            class="box absolute h-16 w-16 rounded-lg bg-slate-600 opacity-25 animate-box-6"
+          ></div>
+          <div
+            class="box absolute h-28 w-28 rounded-lg bg-slate-800 opacity-20 animate-box-7"
+          ></div>
+          <div
+            class="box absolute h-14 w-14 rounded-lg bg-slate-700 opacity-30 animate-box-8"
+          ></div>
+          <div
+            class="box absolute h-20 w-20 rounded-lg bg-slate-600 opacity-25 animate-box-9"
+          ></div>
+          <div
+            class="box absolute h-18 w-18 rounded-lg bg-slate-800 opacity-20 animate-box-10"
+          ></div>
+        </div>
+
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+          <div class="text-center max-w-3xl mx-auto animate-on-scroll">
+            <h2
+              class="text-3xl sm:text-4xl font-bold text-white tracking-tight"
+            >
+              Our Security Products
+            </h2>
+            <p class="mt-4 text-lg text-neutral-300 font-sans">
+              Comprehensive cybersecurity solutions for your business.
+            </p>
+          </div>
+          <div
+            class="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-6xl mx-auto"
+          >
+            <!-- Product Card 1: SecureShield Enterprise -->
+            <div
+              class="bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 shadow-lg overflow-hidden flex flex-col hover-lift animate-on-scroll"
+              style="transition-delay: 100ms"
+            >
+              <div
+                class="bg-slate-800/50 h-32 flex items-center justify-center"
+              >
+              <img src="images/product.png" alt="Avanzo Cyber Sol Logo" class="h-20" /> 
+
+              </div>
+              <div class="p-6 flex-grow flex flex-col">
+                <h3 class="text-xl font-semibold text-white">
+      CyberSol                </h3>
+                <p class="mt-2 text-sm text-slate-300 font-sans">
+                CyberSol was designed as a comprehensive cybersecurity solution to address modern organizations' evolving threats. Developed through in-depth analysis, it helps protect sensitive data, ensure compliance, maintain operations, and safeguard reputation amid rising cyberattacks.<br><br><br>
+
+                </p>
+                <!-- <ul class="mt-4 space-y-2 text-slate-300 font-sans">
+                  <li class="flex items-center">
+                    <svg
+                      class="w-4 h-4 text-blue-400 flex-shrink-0"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                    <span class="ml-2 text-sm"
+                      >Real-time threat monitoring</span
+                    >
+                  </li>
+                  <li class="flex items-center">
+                    <svg
+                      class="w-4 h-4 text-blue-400 flex-shrink-0"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                    <span class="ml-2 text-sm"
+                      >AI-powered malware detection</span
+                    >
+                  </li>
+                  <li class="flex items-center">
+                    <svg
+                      class="w-4 h-4 text-blue-400 flex-shrink-0"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                    <span class="ml-2 text-sm">Automated response system</span>
+                  </li>
+                </ul> -->
+                <div class="mt-auto pt-4">
+                  <a
+                    href="cybersol.html"
+                    class="inline-block px-5 py-2.5 bg-blue-600 text-white text-sm font-semibold rounded-md shadow-sm hover:bg-blue-700 transition-colors"
+                    >Learn More</a
+                  >
+                </div>
+              </div>
+            </div>
+            <!-- Product Card 2: CloudGuard Pro -->
+            <div
+              class="bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 shadow-lg overflow-hidden flex flex-col hover-lift animate-on-scroll"
+              style="transition-delay: 200ms"
+            >
+              <div
+                class="bg-slate-800/50 h-32 flex items-center justify-center"
+              >
+              <img src="images/Cyber Hulk Logo with Box.png" alt="Avanzo Cyber Sol Logo" class="h-20" /> 
+
+              </div>
+              <div class="p-6 flex-grow flex flex-col">
+                <h3 class="text-xl font-semibold text-white">Cyber Hulk</h3>
+                <p class="mt-2 text-sm text-slate-300 font-sans">
+                                  Cyber Hulk is a free, user-friendly app that simplifies cybersecurity by providing clear answers to your security questions. Whether you're a beginner or an expert, it offers up-to-date insights on threats like malware, phishing, and ransomware. The app features real-time threat alerts, interactive tools like a password strength checker and network scanner, and educational content, including guides and news updates. With Cyber Hulk, staying informed and improving your digital security has never been easier.
+
+                </p>
+                <!-- <ul class="mt-4 space-y-2 text-slate-300 font-sans">
+                  <li class="flex items-center">
+                    <svg
+                      class="w-4 h-4 text-blue-400 flex-shrink-0"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                    <span class="ml-2 text-sm">Multi-cloud protection</span>
+                  </li>
+                  <li class="flex items-center">
+                    <svg
+                      class="w-4 h-4 text-blue-400 flex-shrink-0"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                    <span class="ml-2 text-sm">Compliance automation</span>
+                  </li>
+                  <li class="flex items-center">
+                    <svg
+                      class="w-4 h-4 text-blue-400 flex-shrink-0"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                    <span class="ml-2 text-sm">Threat intelligence feeds</span>
+                  </li>
+                </ul> -->
+                <div class="mt-auto pt-4">
+                  <a
+                    href="https://cyberhulk.avanzosolutions.in/"
+                    class="inline-block px-5 py-2.5 bg-blue-600 text-white text-sm font-semibold rounded-md shadow-sm hover:bg-blue-700 transition-colors"
+                    >Learn More</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div
+              class="bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 shadow-lg overflow-hidden flex flex-col hover-lift animate-on-scroll"
+              style="transition-delay: 300ms"
+            >
+              <div
+                class="bg-slate-800/50 h-32 flex items-center justify-center"
+              >
+            <img src="images/myciso png.png" alt="Avanzo Cyber Sol Logo" class="h-20" /> 
+              </div>
+              <div class="p-6 flex-grow flex flex-col">
+                <h3 class="text-xl font-semibold text-white">
+MyCiso                </h3>
+                <p class="mt-2 text-sm text-slate-300 font-sans">
+                myciso offers advanced endpoint protection, specifically engineered to defend against the most sophisticated cyber threats. It provides real-time monitoring and response capabilities, utilizing machine learning to detect and neutralize malware, ransomware, and zero-day exploits before they can compromise your systems. Ideal for businesses of all sizes, CyberGuard ensures that every device connected to your network is a secure fortress against attacks.
+
+                </p>
+                <!-- <ul class="mt-4 space-y-2 text-slate-300 font-sans">
+                  <li class="flex items-center">
+                    <svg
+                      class="w-4 h-4 text-blue-400 flex-shrink-0"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                    <span class="ml-2 text-sm"
+                      >Real-time threat monitoring</span
+                    >
+                  </li>
+                  <li class="flex items-center">
+                    <svg
+                      class="w-4 h-4 text-blue-400 flex-shrink-0"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                    <span class="ml-2 text-sm"
+                      >AI-powered malware detection</span
+                    >
+                  </li>
+                  <li class="flex items-center">
+                    <svg
+                      class="w-4 h-4 text-blue-400 flex-shrink-0"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                    <span class="ml-2 text-sm">Automated response system</span>
+                  </li>
+                </ul> -->
+                <div class="mt-auto pt-4">
+                  <a
+                    href="https://myciso.avanzosolutions.in/"
+                    class="inline-block px-5 py-2.5 bg-blue-600 text-white text-sm font-semibold rounded-md shadow-sm hover:bg-blue-700 transition-colors"
+                    >Learn More</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials Section -->
+      <section
+        class="bg-[#f9fafb] relative py-12 sm:py-16 lg:py-20 overflow-hidden"
+      >
+        <!-- Diagonal Fade Grid Background - Top Left -->
+        <div
+          class="absolute inset-0 z-0"
+          style="
+            background-image: linear-gradient(
+                to right,
+                #d1d5db 1px,
+                transparent 1px
+              ),
+              linear-gradient(to bottom, #d1d5db 1px, transparent 1px);
+            background-size: 32px 32px;
+            -webkit-mask-image: radial-gradient(
+              ellipse 80% 80% at 0% 0%,
+              #000 50%,
+              transparent 90%
+            );
+            mask-image: radial-gradient(
+              ellipse 80% 80% at 0% 0%,
+              #000 50%,
+              transparent 90%
+            );
+          "
+        ></div>
+
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+          <div class="text-center animate-on-scroll">
+            <h2
+              class="text-3xl font-bold tracking-tight text-[#1a4c8a] sm:text-4xl"
+            >
+              Trusted by Industry Leaders
+            </h2>
+            <p class="mt-4 text-lg leading-8 text-gray-600 font-sans">
+              See what our clients say about Avanzo's security solutions.
+            </p>
+          </div>
+          <div
+            class="mx-auto mt-16 grid max-w-lg grid-cols-1 gap-8 lg:max-w-none lg:grid-cols-3"
+          >
+            <div
+              class="rounded-lg border border-gray-200 bg-gray-50/80 backdrop-blur-sm p-8 hover-lift animate-on-scroll"
+              style="transition-delay: 100ms"
+            >
+              <div class="flex items-center">
+                <img
+                  class="h-12 w-12 rounded-full"
+                  src="images/testimonial2.png"
+                  alt="Sarah Johnson"
+                />
+                <div class="ml-4">
+                  <p class="text-base font-semibold text-gray-900">
+                    Pattathil Dhanya Menon
+                  </p>
+                  <p class="text-sm text-gray-600 font-sans">Founder</p>
+                </div>
+              </div>
+              <blockquote class="mt-6 text-gray-700 font-sans">
+                We are in a rapid digital transformation phase where everyone -
+                'Grocer to Tailor to Hair stylist to MSCEs and Corporates - All
+                shifting to the Digital platform.
+              </blockquote>
+            </div>
+            <div
+              class="rounded-lg border border-gray-200 bg-gray-50/80 backdrop-blur-sm p-8 hover-lift animate-on-scroll"
+              style="transition-delay: 200ms"
+            >
+              <div class="flex items-center">
+                <img
+                  class="h-12 w-12 rounded-full"
+                  src="images/testimonial1.png"
+                  alt="Michael Chen"
+                />
+                <div class="ml-4">
+                  <p class="text-base font-semibold text-gray-900">
+                    Ajith Kumar Parakkat
+                  </p>
+                  <p class="text-sm text-gray-600 font-sans">CEO</p>
+                </div>
+              </div>
+              <blockquote class="mt-6 text-gray-700 font-sans">
+                We are in a rapid digital transformation phase where everyone -
+                'Grocer to Tailor to Hair stylist to MSCEs and Corporates - All
+                shifting to the Digital platform.
+              </blockquote>
+            </div>
+            <div
+              class="rounded-lg border border-gray-200 bg-gray-50/80 backdrop-blur-sm p-8 hover-lift animate-on-scroll"
+              style="transition-delay: 300ms"
+            >
+              <div class="flex items-center">
+                <img
+                  class="h-12 w-12 rounded-full"
+                  src="images/pranav 1.png"
+                  alt="Emily Rodriguez"
+                />
+                <div class="ml-4">
+                  <p class="text-base font-semibold text-gray-900">
+                    Pranav Pattathil
+                  </p>
+                  <p class="text-sm text-gray-600 font-sans">Direcctor</p>
+                </div>
+              </div>
+              <blockquote class="mt-6 text-gray-700 font-sans">
+                We are in a rapid digital transformation phase where everyone -
+                'Grocer to Tailor to Hair stylist to MSCEs and Corporates - All
+                shifting to the Digital platform
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA and Footer Section -->
+      <div class="bg-gray-800">
+        <div class="mx-auto max-w-7xl px-6 py-16 text-center sm:py-20 lg:px-8">
+          <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Ready to Secure Your Enterprise?
+          </h2>
+          <p class="mx-auto mt-4 max-w-2xl text-lg leading-8 text-gray-300">
+            Start your free trial today and experience enterprise-grade
+            cybersecurity.
+          </p>
+          <div class="mt-10 flex items-center justify-center gap-x-6">
+            <a
+              href="#"
+              class="rounded-md bg-white px-4 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 hover-lift"
+              >Start Free Trial</a
+            >
+            <a
+              href="#"
+              class="rounded-md border border-white/50 px-4 py-2.5 text-sm font-semibold text-white hover:border-white hover-lift"
+              >Schedule Demo</a
+            >
+          </div>
+        </div>
+        <footer class="bg-gray-900">
+          <div class="mx-auto max-w-7xl overflow-hidden px-6 py-12 lg:px-8">
+            <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
+              <div class="col-span-2 md:col-span-1">
+                <a href="#" class="text-lg font-bold text-white">Avanzo</a>
+                <p class="mt-4 text-sm leading-6 text-gray-400">
+                  Advanced cybersecurity solutions for modern enterprises.
+                </p>
+              </div>
+              <div>
+                <h3 class="text-sm font-semibold leading-6 text-white">
+                  Products
+                </h3>
+                <ul role="list" class="mt-6 space-y-4">
+                  <li>
+                    <a
+                      href="#"
+                      class="text-sm leading-6 text-gray-400 hover:text-white"
+                      >SecureShield</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="text-sm leading-6 text-gray-400 hover:text-white"
+                      >CloudGuard</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3 class="text-sm font-semibold leading-6 text-white">
+                  Company
+                </h3>
+                <ul role="list" class="mt-6 space-y-4">
+                  <li>
+                    <a
+                      href="#"
+                      class="text-sm leading-6 text-gray-400 hover:text-white"
+                      >About</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="text-sm leading-6 text-gray-400 hover:text-white"
+                      >Contact</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3 class="text-sm font-semibold leading-6 text-white">
+                  Support
+                </h3>
+                <ul role="list" class="mt-6 space-y-4">
+                  <li>
+                    <a
+                      href="#"
+                      class="text-sm leading-6 text-gray-400 hover:text-white"
+                      >Help Center</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="mt-10 border-t border-white/10 pt-8">
+              <p class="text-center text-xs leading-5 text-gray-400">
+                &copy; 2025 Avanzo Solutions. All rights reserved.
+              </p>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target); 
+              }
+            });
+          },
+          {
+            threshold: 0.1, 
+          }
+        );
+
+        const elementsToAnimate =
+          document.querySelectorAll(".animate-on-scroll");
+        elementsToAnimate.forEach((el) => {
+          observer.observe(el);
+        });
+      });
+    </script>
+  </body>
+</html>

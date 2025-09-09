@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-gray-50">
+    <!-- Added back navigation button -->
+    <div class="absolute top-8 left-4 sm:left-6 lg:left-8">
+        <a href="index.html" class="flex items-center text-black/80 hover:text-primary transition-colors duration-300 group">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 mr-2 transform group-hover:-translate-x-1 transition-transform duration-300">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+            </svg>
+            <span class="text-sm font-medium">Back to Home</span>
+        </a>
+    </div>
+    
+    <header class="py-8">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-3xl font-bold text-gray-900">Our Products</h1>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 pb-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- CyberSol Product -->
+            <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                <!-- Updated image source to actual logo path -->
+                <img
+                    src="images/product.png"
+                    alt="CyberSol"
+                    class="w-full h-48 object-cover rounded-lg mb-4"
+                />
+                <h2 class="text-lg font-semibold text-gray-900 mb-4">CyberSol</h2>
+                <!-- Added onclick navigation to dedicated page -->
+                <button onclick="window.location.href='cybersol.html'" class="w-full bg-[#144f6d] hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors">
+                    Know More
+                </button>
+            </div>
+
+            <!-- CyberHulk Product -->
+            <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                <!-- Updated image source to actual logo path -->
+                <img
+                    src="images/Cyber Hulk Logo with Box.png"
+                    alt="CyberHulk"
+                    class="w-full h-48 object-cover rounded-lg mb-4"
+                />
+                <h2 class="text-lg font-semibold text-gray-900 mb-4">CyberHulk</h2>
+                <!-- Added onclick navigation to dedicated page -->
+                <button onclick="window.location.href='https://cyberhulk.avanzosolutions.in/'" class="w-full bg-[#144f6d] hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors">
+                    Know More
+                </button>
+            </div>
+
+            <!-- MyCISO Product -->
+            <div class="bg-white rounded-lg shadow-md p-6 text-center">
+    <img
+        src="images/myciso png.png"
+        alt="MyCISO"
+        class="w-full h-48 object-contain mx-auto mb-4"
+    />
+    <h2 class="text-lg font-semibold text-gray-900 mb-4">MyCISO</h2>
+    <button onclick="window.location.href='https://myciso.avanzosolutions.in/'" class="w-full bg-[#144f6d] hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors">
+        Know More
+    </button>
+</div>
+
+        </div>
+    </main>
+    
+</body>
+</html>
