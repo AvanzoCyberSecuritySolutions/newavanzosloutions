@@ -6,64 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
 
-    <!-- ✅ CLICKJACKING PROTECTION: CSP meta tag (secondary layer) -->
     <meta http-equiv="Content-Security-Policy" content="frame-ancestors 'none'">
 
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
     <style>
-        /* Hide page by default — shown only after frame-busting check passes */
         body { display: none; }
     </style>
 </head>
 
 <body class="bg-gray-100">
 
-    <!-- ✅ CLICKJACKING PROTECTION: JavaScript frame-busting (Layer 1) -->
     <script>
         (function () {
-            // If this page is loaded inside an iframe, redirect the top window
             if (window.self !== window.top) {
-                // Attempt to bust out of the frame
                 try {
                     window.top.location = window.self.location;
                 } catch (e) {
-                    // If cross-origin frame blocks redirect, hide all content
                     document.documentElement.innerHTML =
                         '<h1 style="color:red;text-align:center;margin-top:20%;">Access Denied: Framing Not Allowed</h1>';
                 }
-                // Stop further rendering
                 throw new Error("Clickjacking attempt blocked.");
             }
-            // Safe to show the page
             document.addEventListener("DOMContentLoaded", function () {
                 document.body.style.display = "block";
             });
         })();
     </script>
 
-    <!--
-    ======================================================
-    ✅ CLICKJACKING PROTECTION: Server-Side HTTP Headers
-    ======================================================
-    Add the following headers in your server config:
-
-    Apache (.htaccess):
-        Header always set X-Frame-Options "DENY"
-        Header always set Content-Security-Policy "frame-ancestors 'none'"
-
-    Nginx (nginx.conf):
-        add_header X-Frame-Options "DENY";
-        add_header Content-Security-Policy "frame-ancestors 'none'";
-
-    Node.js / Express:
-        res.setHeader('X-Frame-Options', 'DENY');
-        res.setHeader('Content-Security-Policy', "frame-ancestors 'none'");
-
-    These server headers are the PRIMARY and most reliable protection.
-    ======================================================
-    -->
-
+   
     <div class="absolute top-8 left-4 sm:left-6 lg:left-8">
         <a href="index.html"
             class="flex items-center text-black/80 hover:text-blue-700 transition-colors duration-300 group">
@@ -81,12 +52,10 @@
             <div class="bg-white shadow-md rounded border-2 border-solid border-[#144f6d] rounded-lg p-5 w-full">
                 <h3 class="text-3xl mb-8 text-[#144f6d] p-4 text-center">Contact Us</h3>
                 <form id="contactForm" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <!-- Web3Forms Access Key and Settings -->
                     <input type="hidden" name="access_key" value="bb4992b8-c562-461b-a8da-5aa68704378a">
                     <input type="hidden" name="subject" value="New Contact Message from Website">
                     <input type="hidden" name="from_name" value="Your Website Name">
 
-                    <!-- ✅ Honeypot field to prevent bot spam (Web3Forms feature) -->
                     <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
                     <div>
@@ -135,10 +104,7 @@
     </section>
 
     <script>
-        // ============================================================
-        // ✅ CLICKJACKING PROTECTION: Runtime iframe detection (Layer 2)
-        // Continuously monitors if page gets embedded after load
-        // ============================================================
+        
         (function monitorFraming() {
             setInterval(function () {
                 if (window.self !== window.top) {
@@ -150,9 +116,6 @@
             }, 500);
         })();
 
-        // ============================================================
-        // Form validation & submission
-        // ============================================================
         const contactForm = document.getElementById('contactForm');
         const nameInput = document.getElementById('name');
         const nameValidation = document.getElementById('nameValidation');
@@ -184,7 +147,6 @@
         contactForm.addEventListener('submit', function (event) {
             event.preventDefault();
 
-            // ✅ Block submission if page is somehow framed
             if (window.self !== window.top) {
                 alert("Submission blocked: page is being framed.");
                 return;
@@ -241,7 +203,6 @@
                 });
         });
 
-        // Real-time validation
         [nameInput, emailInput, subjectInput, messageInput].forEach(input => {
             input.addEventListener('input', function () {
                 switch (input.id) {
