@@ -250,6 +250,17 @@
     .product-body .more { margin-top: 24px; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; color: #fff; }
     .product-body .more i { transition: transform .25s; font-size: 13px; }
     .product:hover .more i { transform: translateX(4px); }
+    /* upcoming products: brand-coloured logo panels and a status tag instead of "Learn more" */
+    .product-logo.logo-archiva { background: #053f2b; }
+    .product-logo.logo-vaelon { background: #16122a; }
+    .product-logo.logo-archiva img, .product-logo.logo-vaelon img { max-height: 84px; }
+    .product-body .status {
+      margin-top: 24px; align-self: flex-start; display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 12px; border-radius: 999px; border: 1px solid rgba(255,255,255,.14);
+      font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #cbd5e1;
+    }
+    .product-body .status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #f59e0b; box-shadow: 0 0 8px #f59e0b; }
+    .product-body .status.dev::before { background: #9b7bff; box-shadow: 0 0 8px #9b7bff; }
 
     /* ============ STANDARDS BAND ============ */
     .standards-card {
@@ -440,8 +451,8 @@
     </section>
 
     <div class="after-flow">
-      <!-- FEATURES -->
-      <section class="section features" id="services">
+      <!-- FEATURES (hidden for now; remove the "hidden" attribute to show it again) -->
+      <section class="section features" id="services" hidden>
         <div class="container">
           <div class="features-head reveal">
             <div>
@@ -511,6 +522,33 @@
                 <span class="more">Learn more <i class="fa-solid fa-arrow-right"></i></span>
               </div>
             </a>
+            <div class="product reveal">
+              <div class="product-logo"><img src="images/scanon-logo.png" alt="ScanOn logo" loading="lazy" /></div>
+              <div class="product-body">
+                <span class="kind">Device security</span>
+                <h3>ScanOn</h3>
+                <p>A scanning kit that checks Android phones and Windows laptops for viruses, malware and apps running without the owner's permission, right at the service counter.</p>
+                <span class="status">In testing · Launching soon</span>
+              </div>
+            </div>
+            <div class="product reveal">
+              <div class="product-logo logo-archiva"><img src="images/archiva-logo.png" alt="Archiva by Avanzo logo" loading="lazy" /></div>
+              <div class="product-body">
+                <span class="kind">Document management</span>
+                <h3>Archiva</h3>
+                <p>Every document, one identity. Each document gets its own unique ID, so it can be traced back to its source and cannot be duplicated.</p>
+                <span class="status">In testing · Launching soon</span>
+              </div>
+            </div>
+            <div class="product reveal">
+              <div class="product-logo logo-vaelon"><img src="images/vaelon-logo.png" alt="Vaelon by Avanzo logo" loading="lazy" /></div>
+              <div class="product-body">
+                <span class="kind">Open-source intelligence</span>
+                <h3>Vaelon</h3>
+                <p>Avanzo's OSINT platform. It turns publicly available information into intelligence that investigators and security teams can act on.</p>
+                <span class="status dev">In development</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -670,6 +708,21 @@
 
       document.getElementById("year").textContent = new Date().getFullYear();
 
+      // Product logos pinned to the six corners ("joints") of the outer hexagon.
+      // The files in images/badges are white, trimmed, transparent versions of the product logos.
+      // corner = 0 top, then counter-clockwise: 1 top-left, 2 bottom-left, 3 bottom, 4 bottom-right, 5 top-right.
+      // ratio = width / height of each file, size = scale (Cyber Hulk's square mark needs more room),
+      // color = brand accent for the glow, href = where a click on the logo goes (none = not clickable).
+      // Shared with the 3D scene below.
+      window.AVZ_BADGES = [
+        { src: "images/badges/myciso-white.png", corner: 0, ratio: 459 / 124, size: 1, color: "#ff5c72", href: "https://myciso.avanzosolutions.in/", alt: "MyCISO" },
+        { src: "images/badges/scanon-white.png", corner: 1, ratio: 565 / 120, size: 1, color: "#4c8dff", alt: "ScanOn" },
+        { src: "images/badges/cyberhulk-white.png", corner: 2, ratio: 366 / 240, size: 1.4, color: "#74d66a", href: "https://cyberhulk.avanzosolutions.in/", alt: "Cyber Hulk" },
+        { src: "images/badges/archiva-white.png", corner: 3, ratio: 806 / 192, size: 1, color: "#d4a94e", alt: "Archiva" },
+        { src: "images/badges/cybersol-white.png", corner: 4, ratio: 600 / 124, size: 1, color: "#2fd4e0", href: "cybersol.html", alt: "CyberSol" },
+        { src: "images/badges/vaelon-white.png", corner: 5, ratio: 461 / 129, size: 1, color: "#9b7bff", alt: "Vaelon" }
+      ];
+
       // Static emblem, used when WebGL is not available
       var R = 100, rot = 0, twist = 3.4, polys = "";
       for (var i = 0; i < 22; i++) {
@@ -682,10 +735,31 @@
         rot += twist;
         R = R * Math.cos(Math.PI / 6) / Math.cos((30 - twist) * Math.PI / 180);
       }
+      function fallbackBadges() {
+        // node on the corner, short connector, then the white logo with a brand-coloured glow
+        var out = "", HW = 39, HH = 11, GAP = 11;
+        window.AVZ_BADGES.forEach(function (b, k) {
+          var a = (-90 - 60 * b.corner) * Math.PI / 180; // same corners as the 3D scene (SVG y points down)
+          var dx = Math.cos(a), dy = Math.sin(a);
+          var cx = 100 * dx, cy = 100 * dy;
+          var h = Math.min(2 * HH * 0.82, (2 * HW * 0.94) / b.ratio) * (b.size || 1), w = h * b.ratio;
+          var d = GAP + Math.abs(dx) * w / 2 + Math.abs(dy) * h / 2;
+          var lx = cx + dx * d, ly = cy + dy * d;
+          var ex = cx + dx * GAP, ey = cy + dy * GAP;
+          out +=
+            '<line x1="' + cx.toFixed(2) + '" y1="' + cy.toFixed(2) + '" x2="' + ex.toFixed(2) + '" y2="' + ey.toFixed(2) + '" stroke="#7fe0c0" stroke-opacity=".7" stroke-width=".6"/>' +
+            '<circle cx="' + cx.toFixed(2) + '" cy="' + cy.toFixed(2) + '" r="4" fill="#7fe0c0" fill-opacity=".18"/>' +
+            '<circle cx="' + cx.toFixed(2) + '" cy="' + cy.toFixed(2) + '" r="1.6" fill="#7fe0c0"/>' +
+            '<image href="' + b.src + '" x="' + (lx - w / 2).toFixed(2) + '" y="' + (ly - h / 2).toFixed(2) + '" width="' + w.toFixed(2) + '" height="' + h.toFixed(2) + '" style="filter: drop-shadow(0 0 3px ' + b.color + ')"/>';
+        });
+        return out;
+      }
       document.getElementById("heroFallback").innerHTML =
-        '<svg viewBox="-110 -110 220 220"><defs><linearGradient id="fg" gradientUnits="userSpaceOnUse" x1="-100" y1="-100" x2="100" y2="100">' +
-        '<stop offset="0" stop-color="#7fe0c0"/><stop offset=".55" stop-color="#cfd8ff"/><stop offset="1" stop-color="#6f93e6"/></linearGradient></defs>' +
+        '<svg viewBox="-200 -160 400 320"><defs><linearGradient id="fg" gradientUnits="userSpaceOnUse" x1="-100" y1="-100" x2="100" y2="100">' +
+        '<stop offset="0" stop-color="#7fe0c0"/><stop offset=".55" stop-color="#cfd8ff"/><stop offset="1" stop-color="#6f93e6"/></linearGradient>' +
+        '</defs>' +
         '<g fill="none" stroke="url(#fg)">' + polys + '</g>' +
+        fallbackBadges() +
         '<text x="0" y="4" text-anchor="middle" dominant-baseline="middle" font-family="Quicksand, sans-serif" font-weight="600" font-size="50" fill="#eef2ff">az</text></svg>';
 
       // 3D tilt on the service cards (mouse only, skipped for reduced motion)
@@ -966,6 +1040,141 @@ function init() {
     azMat.needsUpdate = true;
   });
 
+  // Product labels on the six corners ("joints") of the outer hexagon (see window.AVZ_BADGES).
+  // Each corner gets a glowing node, a short connector and the logo in white with a brand-coloured glow.
+  // They live in "tilt" (not "spin") so labels stay upright while following the rotating corners.
+  const LABEL_W = 1.02, LABEL_H = 0.29, LABEL_GAP = 0.32;
+  const LABEL_M = 0.22; // extra canvas margin around the logo (fraction of the label height) for the glow
+
+  function labelTexture(b) {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => {
+        const W = 1024, H = Math.round((W * LABEL_H) / LABEL_W), M = Math.round(H * LABEL_M);
+        const c = document.createElement("canvas");
+        c.width = W + 2 * M;
+        c.height = H + 2 * M;
+        const x = c.getContext("2d");
+        x.translate(M, M);
+        // white logo with a soft glow in the product's brand colour (no box around it)
+        const lh = Math.min(H * 0.82, (W * 0.94) / b.ratio), lw = lh * b.ratio;
+        const lx = (W - lw) / 2, ly = (H - lh) / 2;
+        x.shadowColor = b.color;
+        x.shadowBlur = M * 0.7;
+        x.drawImage(img, lx, ly, lw, lh);
+        x.shadowBlur = M * 0.25;
+        x.drawImage(img, lx, ly, lw, lh);
+        x.shadowBlur = 0;
+        x.drawImage(img, lx, ly, lw, lh);
+        const t = new THREE.CanvasTexture(c);
+        t.colorSpace = THREE.SRGBColorSpace;
+        t.anisotropy = 8;
+        resolve(t);
+      };
+      img.onerror = reject;
+      img.src = b.src;
+    });
+  }
+
+  // Label material: the canvas texture plus a light sweep that glides across the logo every few seconds
+  function labelMaterial(phase) {
+    return new THREE.ShaderMaterial({
+      uniforms: { map: { value: null }, opacity: { value: 0 }, time: { value: 0 }, phase: { value: phase }, boost: { value: 0 } },
+      vertexShader: "varying vec2 vUv; void main() { vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }",
+      fragmentShader: [
+        "uniform sampler2D map; uniform float opacity; uniform float time; uniform float phase; uniform float boost; varying vec2 vUv;",
+        "void main() {",
+        "  vec4 c = texture2D(map, vUv);",
+        "  float pos = fract(time / 6.0 + phase) * 2.6 - 0.8;",
+        "  float d = vUv.x - pos + (vUv.y - 0.5) * 0.35;",
+        "  float band = exp(-d * d * 900.0) * 0.55 + exp(-d * d * 60.0) * 0.12;",
+        "  c.rgb = mix(c.rgb, vec3(1.0), band * smoothstep(0.7, 1.0, c.a));",
+        "  c.rgb *= 1.0 + boost;",
+        "  gl_FragColor = vec4(c.rgb, min(1.0, c.a * (1.0 + boost * 0.6)) * opacity);",
+        "  #include <colorspace_fragment>",
+        "}",
+      ].join("\n"),
+      transparent: true,
+      depthTest: false,
+      depthWrite: false,
+    });
+  }
+
+  function nodeTexture() {
+    const c = document.createElement("canvas");
+    c.width = c.height = 128;
+    const x = c.getContext("2d");
+    const g = x.createRadialGradient(64, 64, 0, 64, 64, 64);
+    g.addColorStop(0, "rgba(127,224,192,0.55)");
+    g.addColorStop(0.35, "rgba(127,224,192,0.18)");
+    g.addColorStop(1, "rgba(127,224,192,0)");
+    x.fillStyle = g;
+    x.fillRect(0, 0, 128, 128);
+    x.beginPath();
+    x.arc(64, 64, 22, 0, Math.PI * 2);
+    x.lineWidth = 4;
+    x.strokeStyle = "rgba(127,224,192,0.9)";
+    x.stroke();
+    x.beginPath();
+    x.arc(64, 64, 10, 0, Math.PI * 2);
+    x.fillStyle = "#eafff7";
+    x.fill();
+    return new THREE.CanvasTexture(c);
+  }
+
+  function ringTexture() {
+    const c = document.createElement("canvas");
+    c.width = c.height = 128;
+    const x = c.getContext("2d");
+    x.beginPath();
+    x.arc(64, 64, 58, 0, Math.PI * 2);
+    x.lineWidth = 3;
+    x.strokeStyle = "rgba(127,224,192,1)";
+    x.shadowColor = "rgba(127,224,192,1)";
+    x.shadowBlur = 6;
+    x.stroke();
+    return new THREE.CanvasTexture(c);
+  }
+
+  const nodeTex = nodeTexture();
+  const ringTex = ringTexture();
+  const glowTex = radialTexture([[0, "rgba(255,255,255,1)"], [0.3, "rgba(200,255,240,.8)"], [1, "rgba(127,224,192,0)"]]);
+  const badgeOpts = { transparent: true, opacity: 0, depthTest: false, depthWrite: false };
+  const unit = LABEL_W / 1024; // world units per label-canvas pixel
+  const badgeList = window.AVZ_BADGES || [];
+  const nB = Math.max(1, badgeList.length);
+  const badges = badgeList.map((b, k) => {
+    const size = b.size || 1;
+    const group = new THREE.Group();
+    const nodeMat = new THREE.MeshBasicMaterial({ ...badgeOpts, map: nodeTex, blending: THREE.AdditiveBlending });
+    const node = new THREE.Mesh(new THREE.PlaneGeometry(0.4, 0.4), nodeMat);
+    const ringMat = new THREE.MeshBasicMaterial({ ...badgeOpts, map: ringTex, blending: THREE.AdditiveBlending });
+    const ring = new THREE.Mesh(new THREE.PlaneGeometry(0.5, 0.5), ringMat);
+    const linkMat = new THREE.MeshBasicMaterial({ ...badgeOpts, color: 0x7fe0c0 });
+    const link = new THREE.Mesh(new THREE.PlaneGeometry(1, 0.012), linkMat);
+    const sparkMat = new THREE.MeshBasicMaterial({ ...badgeOpts, map: glowTex, blending: THREE.AdditiveBlending });
+    const spark = new THREE.Mesh(new THREE.PlaneGeometry(0.11, 0.11), sparkMat);
+    const labelMat = labelMaterial(k / nB);
+    const label = new THREE.Mesh(new THREE.PlaneGeometry(LABEL_W + 2 * LABEL_M * LABEL_H, LABEL_H * (1 + 2 * LABEL_M)), labelMat);
+    label.visible = false;
+    node.renderOrder = 5;
+    ring.renderOrder = 5;
+    spark.renderOrder = 5;
+    link.renderOrder = 4;
+    label.renderOrder = 4;
+    group.add(link, label, ring, spark, node);
+    tilt.add(group);
+    labelTexture(b).then((t) => { labelMat.uniforms.map.value = t; label.visible = true; }).catch(() => {});
+    // half-size of the visible logo in world units, used to keep it clear of the corner
+    const H = (1024 * LABEL_H) / LABEL_W;
+    const lh = Math.min(H * 0.82, (1024 * 0.94) / b.ratio) * unit * size;
+    return {
+      b, size, group, node, nodeMat, ring, ringMat, link, linkMat, spark, sparkMat, label, labelMat,
+      hw: (lh * b.ratio) / 2, hh: lh / 2, hover: 0,
+      angle: Math.PI / 2 + ((b.corner ?? k) * Math.PI) / 3,
+    };
+  });
+
   // Particle field (data / network dust)
   const isSmall = window.innerWidth < 860;
   const P = isSmall ? 700 : 1400;
@@ -1078,6 +1287,41 @@ function init() {
 
   // ---------------------------------------------------------------- input + resize
   const mouse = { x: 0, y: 0, tx: 0, ty: 0 };
+
+  // Hover / click on the product logos (mouse only). The canvas ignores pointer events,
+  // so hits are worked out with a raycast and real page controls always win.
+  const easeOutBack = (t) => { const c1 = 1.4, c3 = c1 + 1, u = t - 1; return 1 + c3 * u * u * u + c1 * u * u; };
+  const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  const raycaster = new THREE.Raycaster();
+  const ndc = new THREE.Vector2();
+  let hoverIdx = -1, pointerOnControl = false, pointerInside = false;
+  const CONTROLS = "a, button, input, textarea, select, summary, label, [role='button']";
+  window.addEventListener("pointermove", (e) => {
+    pointerInside = true;
+    pointerOnControl = !!(e.target.closest && e.target.closest(CONTROLS));
+  }, { passive: true });
+  document.addEventListener("pointerleave", () => { pointerInside = false; });
+  function updateBadgeHover() {
+    let hit = -1;
+    if (finePointer && pointerInside && !pointerOnControl && canvas.style.visibility !== "hidden") {
+      ndc.set(mouse.tx, -mouse.ty);
+      raycaster.setFromCamera(ndc, camera);
+      const live = badges.filter((bd) => bd.label.visible && bd.labelMat.uniforms.opacity.value > 0.5);
+      const hits = raycaster.intersectObjects(live.map((bd) => bd.label), false);
+      if (hits.length) hit = badges.findIndex((bd) => bd.label === hits[0].object);
+    }
+    if (hit !== hoverIdx) {
+      hoverIdx = hit;
+      root.style.cursor = hit >= 0 && badges[hit].b.href ? "pointer" : "";
+    }
+  }
+  window.addEventListener("click", (e) => {
+    if (hoverIdx < 0 || (e.target.closest && e.target.closest(CONTROLS))) return;
+    const href = badges[hoverIdx].b.href;
+    if (!href) return;
+    if (/^https?:/.test(href)) window.open(href, "_blank", "noopener");
+    else window.location.href = href;
+  });
   window.addEventListener("pointermove", (e) => {
     mouse.tx = (e.clientX / window.innerWidth) * 2 - 1;
     mouse.ty = (e.clientY / window.innerHeight) * 2 - 1;
@@ -1092,7 +1336,7 @@ function init() {
     camera.aspect = vw / vh;
     // Pull the camera back on narrow screens so the emblem always fits
     const halfTan = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
-    baseZ = Math.max(10, 2.5 / (halfTan * camera.aspect));
+    baseZ = Math.max(10, 2.9 / (halfTan * camera.aspect)); // 2.9 leaves room for the corner labels
     camera.updateProjectionMatrix();
     lineMaterials.forEach((m) => m.resolution.set(vw, vh));
   }
@@ -1131,7 +1375,10 @@ function init() {
 
     const visible = fr.bottom > 0;
     canvas.style.visibility = visible ? "visible" : "hidden";
-    if (!visible) return;
+    if (!visible) {
+      if (hoverIdx >= 0) { hoverIdx = -1; root.style.cursor = ""; }
+      return;
+    }
 
     // Phase values
     const intro = smooth(clamp01((now - start) / 1800));
@@ -1186,6 +1433,47 @@ function init() {
       L.line.position.z = L.z0 * (1 - C);
       L.line.material.opacity = L.base * G * (0.8 + 0.2 * local);
     }
+
+    // Product logos: appear one by one once the outer layer is drawn, then idle with ripples,
+    // light pulses along the connectors and a gentle float; hovering lifts and brightens a logo
+    updateBadgeHover();
+    badges.forEach((bd, k) => {
+      const p = smooth(clamp01((D * total - (W - 1) - k * (1.5 / nB)) / 1.2));
+      const pl = clamp01(p * 1.6 - 0.4);
+      const a = bd.angle + spinAngle, dx = Math.cos(a), dy = Math.sin(a);
+      bd.group.position.set(R0 * dx, R0 * dy, layers[0].z0 * (1 - C));
+      bd.hover += ((hoverIdx === k ? 1 : 0) - bd.hover) * 0.12;
+
+      // logo slides out along its connector and settles with a small overshoot
+      const d = LABEL_GAP + Math.abs(dx) * bd.hw + Math.abs(dy) * bd.hh;
+      const drift = Math.sin(time * 1.3 + k * 2.1) * 0.03 * pl;
+      const dist = lerp(0.05, d, easeOutBack(pl)) + drift + bd.hover * 0.06;
+      bd.label.position.set(dx * dist, dy * dist, 0);
+      bd.label.scale.setScalar(bd.size * (0.55 + 0.45 * easeOutBack(pl)) * (1 + 0.1 * bd.hover));
+      const arrive = Math.sin(clamp01((pl - 0.55) / 0.45) * Math.PI); // short flash as it lands
+      bd.labelMat.uniforms.opacity.value = smooth(pl) * G;
+      bd.labelMat.uniforms.time.value = time;
+      bd.labelMat.uniforms.boost.value = 0.35 * bd.hover + 0.3 * arrive;
+
+      // connector grows from the corner
+      const len = Math.max(0.001, LABEL_GAP * p);
+      bd.link.rotation.z = a;
+      bd.link.scale.x = len;
+      bd.link.position.set((dx * len) / 2, (dy * len) / 2, 0);
+      bd.linkMat.opacity = (0.55 + 0.35 * bd.hover) * p * G;
+
+      // light pulse travelling from the corner to the logo
+      const tp = (time / 2.4 + k / nB) % 1;
+      bd.spark.position.set(dx * len * tp, dy * len * tp, 0);
+      bd.sparkMat.opacity = Math.sin(tp * Math.PI) * pl * G;
+
+      // corner node: breathing core, flash on arrival, sonar ripple
+      bd.node.scale.setScalar(Math.max(0.001, p * (1 + 0.1 * Math.sin(time * 2.2 + k * 2.1) + 0.5 * arrive + 0.25 * bd.hover)));
+      bd.nodeMat.opacity = p * G;
+      const rp = (time / 2.8 + k / nB) % 1;
+      bd.ring.scale.setScalar(0.25 + rp * 1.1);
+      bd.ringMat.opacity = (1 - rp) * (1 - rp) * 0.7 * pl * G;
+    });
 
     // "az" and core
     azMat.opacity = A * G;
