@@ -1,1410 +1,1245 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Avanzo - Cybersecurity Solutions</title>
-    <link rel="icon" href="images/logo.png" type="image/png">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Avanzo Solutions | Cyber Security, Investigation &amp; Compliance</title>
+  <meta name="description" content="Avanzo Cyber Security Solutions protects businesses with threat detection, cybercrime investigation, compliance and 24/7 expert support." />
+  <link rel="icon" href="images/logo.png" type="image/png" />
 
-    <script src="https://cdn.tailwindcss.com"></script>
- 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Raleway:wght@400;700;800&display=swap"
-      rel="stylesheet"
-    />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Raleway:wght@500;700;800&family=Quicksand:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-    />
-    <style>
-  
-      body {
-        font-family: "Raleway", sans-serif;
-        overflow-x: hidden;
+  <!-- 3D stack: Three.js (WebGL) + Lenis smooth scroll -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
       }
-      .font-sans {
-        font-family: "Inter", sans-serif;
-      }
-      .animated-bg {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 0;
-        overflow: hidden;
-      }
-      .line {
-        position: absolute;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(148, 163, 184, 0.3),
-          transparent
-        );
-        animation: flow 15s infinite linear;
-      }
-      .line:nth-child(1) {
-        width: 200px;
-        height: 2px;
-        top: 10%;
-        left: -200px;
-        animation-delay: 0s;
-        animation-duration: 12s;
-      }
-      .line:nth-child(2) {
-        width: 150px;
-        height: 1px;
-        top: 25%;
-        left: -150px;
-        animation-delay: 2s;
-        animation-duration: 18s;
-      }
-      .line:nth-child(3) {
-        width: 300px;
-        height: 1px;
-        top: 40%;
-        left: -300px;
-        animation-delay: 4s;
-        animation-duration: 14s;
-      }
-      .line:nth-child(4) {
-        width: 180px;
-        height: 2px;
-        top: 55%;
-        left: -180px;
-        animation-delay: 6s;
-        animation-duration: 16s;
-      }
-      .line:nth-child(5) {
-        width: 250px;
-        height: 1px;
-        top: 70%;
-        left: -250px;
-        animation-delay: 8s;
-        animation-duration: 20s;
-      }
-      .line:nth-child(6) {
-        width: 120px;
-        height: 1px;
-        top: 85%;
-        left: -120px;
-        animation-delay: 10s;
-        animation-duration: 13s;
-      }
-      .line:nth-child(7) {
-        width: 220px;
-        height: 1px;
-        top: 15%;
-        left: -220px;
-        animation-delay: 3s;
-        animation-duration: 17s;
-      }
-      .line:nth-child(8) {
-        width: 160px;
-        height: 2px;
-        top: 35%;
-        left: -160px;
-        animation-delay: 7s;
-        animation-duration: 15s;
-      }
-      .line:nth-child(9) {
-        width: 280px;
-        height: 1px;
-        top: 65%;
-        left: -280px;
-        animation-delay: 1s;
-        animation-duration: 19s;
-      }
-      .line:nth-child(10) {
-        width: 190px;
-        height: 1px;
-        top: 80%;
-        left: -190px;
-        animation-delay: 5s;
-        animation-duration: 11s;
-      }
+    }
+  </script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
 
-      @keyframes flow {
-        0% {
-          transform: translateX(0) rotate(0deg);
-          opacity: 0;
-        }
-        10% {
-          opacity: 0.6;
-        }
-        90% {
-          opacity: 0.6;
-        }
-        100% {
-          transform: translateX(calc(100vw + 300px)) rotate(5deg);
-          opacity: 0;
-        }
-      }
+  <style>
+    :root {
+      --navy-950: #060e1f;
+      --navy-900: #0a1630;
+      --navy-800: #11234a;
+      --navy: #1e3a75;
+      --teal: #5fc4a4;
+      --blue: #3a63b0;
+      --ink: #0f172a;
+      --muted: #5b6478;
+      --line: #e3e8f0;
+      --bg: #f6f8fb;
+      --white: #ffffff;
+      --radius: 14px;
+      --header-h: 72px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    html.has-webgl { scroll-behavior: auto; }
+    html.lenis, html.lenis body { height: auto; }
+    .lenis.lenis-smooth { scroll-behavior: auto !important; }
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--navy-950);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3 { font-family: "Raleway", sans-serif; margin: 0; letter-spacing: -0.01em; }
+    p { margin: 0; line-height: 1.65; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .eyebrow {
+      display: inline-flex; flex-wrap: wrap; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--blue);
+    }
+    .eyebrow::before { content: ""; width: 18px; height: 2px; background: linear-gradient(90deg, var(--teal), var(--blue)); }
+    .section { padding: 112px 0; }
+    .section-title { font-size: clamp(30px, 4vw, 46px); font-weight: 800; line-height: 1.12; margin-top: 14px; }
+    .section-lead { color: var(--muted); font-size: 18px; margin-top: 16px; max-width: 640px; }
 
-      .particle {
-        position: absolute;
-        width: 4px;
-        height: 4px;
-        background: rgba(99, 102, 241, 0.3);
-        border-radius: 50%;
-        animation: float 20s infinite linear;
-      }
-      .particle:nth-child(11) {
-        top: 20%;
-        left: -10px;
-        animation-delay: 0s;
-        animation-duration: 25s;
-      }
-      .particle:nth-child(12) {
-        top: 60%;
-        left: -10px;
-        animation-delay: 5s;
-        animation-duration: 30s;
-      }
-      .particle:nth-child(13) {
-        top: 45%;
-        left: -10px;
-        animation-delay: 10s;
-        animation-duration: 22s;
-      }
-      .particle:nth-child(14) {
-        top: 75%;
-        left: -10px;
-        animation-delay: 15s;
-        animation-duration: 28s;
-      }
-      .particle:nth-child(15) {
-        top: 30%;
-        left: -10px;
-        animation-delay: 8s;
-        animation-duration: 26s;
-      }
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 13px 22px; border-radius: 999px;
+      font-weight: 600; font-size: 15px; border: 1px solid transparent;
+      transition: transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease;
+      cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: linear-gradient(100deg, var(--teal), var(--blue)); color: #fff; box-shadow: 0 10px 24px -10px rgba(58, 99, 176, .7); }
+    .btn-dark { background: var(--navy); color: #fff; }
+    .btn-dark:hover { background: var(--navy-800); }
+    .btn-ghost { border-color: rgba(255,255,255,.3); color: #fff; }
+    .btn-ghost:hover { border-color: #fff; background: rgba(255,255,255,.06); }
+    .btn-outline { border-color: var(--line); color: var(--navy); background: #fff; }
+    .btn-outline:hover { border-color: var(--navy); }
+    .btn i { font-size: 13px; transition: transform .25s ease; }
+    .btn:hover i { transform: translateX(3px); }
 
-      @keyframes float {
-        0% {
-          transform: translateX(0) translateY(0);
-          opacity: 0;
-        }
-        10% {
-          opacity: 1;
-        }
-        90% {
-          opacity: 1;
-        }
-        100% {
-          transform: translateX(calc(100vw + 20px)) translateY(-100px);
-          opacity: 0;
-        }
+    /* Header */
+    .site-header {
+      position: fixed; inset: 0 0 auto 0; height: var(--header-h); z-index: 100;
+      background: rgba(255,255,255,.9);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(15,23,42,.06);
+    }
+    .site-header .container { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    /* logo.png has a lot of empty padding, so crop it to the visible mark */
+    .brand { display: block; height: 58px; overflow: hidden; }
+    .brand img { height: 124px; width: auto; margin-top: -31px; }
+    .nav { display: flex; align-items: center; gap: 32px; }
+    .nav a.link { font-weight: 500; font-size: 14px; letter-spacing: .06em; text-transform: uppercase; color: #334155; transition: color .2s; }
+    .nav a.link:hover { color: var(--blue); }
+    .nav-actions { display: flex; gap: 10px; }
+    .nav-actions .btn { padding: 10px 18px; font-size: 14px; }
+    .menu-toggle { display: none; background: none; border: 0; font-size: 22px; color: var(--navy); padding: 8px; cursor: pointer; }
+    .mobile-nav {
+      display: none; position: fixed; top: var(--header-h); left: 0; right: 0; z-index: 99;
+      background: #fff; border-bottom: 1px solid var(--line); padding: 12px 24px 24px;
+      box-shadow: 0 20px 40px -20px rgba(15,23,42,.25);
+    }
+    .mobile-nav.open { display: block; }
+    .mobile-nav a.link { display: block; padding: 14px 0; border-bottom: 1px solid var(--line); font-weight: 500; }
+    .mobile-nav .btn { width: 100%; justify-content: center; margin-top: 12px; }
+
+    /* ============ 3D STAGE ============ */
+    .scene-bg {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background:
+        radial-gradient(70% 60% at 70% 45%, rgba(58,99,176,.26), transparent 70%),
+        radial-gradient(50% 50% at 15% 85%, rgba(95,196,164,.12), transparent 70%),
+        linear-gradient(180deg, var(--navy-900), var(--navy-950));
+    }
+    .scene-bg::after {
+      content: ""; position: absolute; inset: 0; opacity: .35;
+      background-image: linear-gradient(rgba(148,163,184,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,.12) 1px, transparent 1px);
+      background-size: 48px 48px;
+      -webkit-mask-image: radial-gradient(ellipse 60% 55% at 50% 50%, #000 30%, transparent 80%);
+      mask-image: radial-gradient(ellipse 60% 55% at 50% 50%, #000 30%, transparent 80%);
+    }
+    #webgl { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; display: none; }
+    html.has-webgl #webgl { display: block; }
+    .page { position: relative; z-index: 2; }
+
+    /* ============ HERO ============ */
+    .hero3d {
+      min-height: 100vh; min-height: 100svh;
+      display: flex; flex-direction: column; align-items: center; text-align: center; color: #fff;
+      padding: calc(var(--header-h) + 8vh) 0 28px;
+    }
+    .hero3d .eyebrow { color: var(--teal); justify-content: center; }
+    .hero3d h1 { margin-top: 18px; font-size: clamp(40px, 6vw, 84px); font-weight: 800; line-height: 1.0; letter-spacing: -0.03em; }
+    .hero3d h1 .grad { background: linear-gradient(100deg, var(--teal), #7fa6ef); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero3d-lead { margin: 20px auto 0; max-width: 600px; font-size: 18px; color: #b8c3d6; }
+    .hero3d-lead strong { color: #fff; font-weight: 600; }
+    .hero3d .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 28px; }
+    .hero3d-scroll {
+      margin-top: auto; padding-bottom: 6px; border-bottom: 1px solid rgba(255,255,255,.5);
+      font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: #cbd5e1;
+    }
+    .hero3d-scroll:hover { color: #fff; border-color: #fff; }
+    .hero-fallback { display: flex; justify-content: center; margin: 40px 0; }
+    .hero-fallback svg { width: min(300px, 70vw); height: auto; }
+    html.has-webgl .hero-fallback { display: none; }
+
+    .emblem-spacer { height: 0; }
+    html.has-webgl .emblem-spacer { height: 220vh; }
+    .emblem-caption {
+      position: fixed; left: 50%; bottom: 7vh; transform: translateX(-50%); z-index: 2;
+      text-align: center; pointer-events: none; opacity: 0; display: none;
+    }
+    html.has-webgl .emblem-caption { display: block; }
+    .emblem-caption strong { display: block; font-family: "Raleway", sans-serif; font-size: 15px; letter-spacing: .32em; text-transform: uppercase; color: #e2e8f0; }
+    .emblem-caption span { display: block; margin-top: 6px; font-size: 13px; color: #94a3b8; letter-spacing: .04em; }
+
+    /* ============ FLOW (pinned 4-step process) ============ */
+    .flow { position: relative; color: #fff; padding: 96px 0; }
+    html.has-webgl .flow { height: 400vh; padding: 0; }
+    html.has-webgl .flow-sticky { position: sticky; top: 0; height: 100vh; height: 100svh; display: flex; align-items: center; padding-top: var(--header-h); }
+    .flow-col { max-width: 500px; }
+    .flow .eyebrow { color: var(--teal); }
+    .flow-title { font-size: clamp(28px, 3.4vw, 42px); font-weight: 800; line-height: 1.12; margin: 14px 0 28px; }
+    .flow-step { position: relative; padding: 18px 0 18px 28px; border-top: 1px solid rgba(255,255,255,.1); cursor: pointer; }
+    .flow-step:last-child { border-bottom: 1px solid rgba(255,255,255,.1); }
+    .flow-step .track { position: absolute; left: 0; top: 18px; bottom: 18px; width: 2px; border-radius: 2px; background: rgba(255,255,255,.12); overflow: hidden; }
+    .flow-step .fill { position: absolute; inset: 0; transform-origin: top; transform: scaleY(0); background: linear-gradient(var(--teal), var(--blue)); }
+    .flow-head { display: flex; align-items: baseline; gap: 14px; }
+    .flow-num { font-family: "Raleway", sans-serif; font-weight: 800; font-size: 14px; color: var(--teal); letter-spacing: .08em; }
+    .flow-step h3 { font-size: 21px; font-weight: 700; opacity: .45; transition: opacity .4s ease; }
+    .flow-step.active h3 { opacity: 1; }
+    .flow-body { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows .5s ease, opacity .5s ease; }
+    .flow-body > p { overflow: hidden; min-height: 0; color: #a5b1c5; font-size: 15px; }
+    .flow-body > p span { display: block; padding-top: 10px; }
+    .flow-step.active .flow-body { grid-template-rows: 1fr; opacity: 1; }
+    html:not(.has-webgl) .flow-step h3 { opacity: 1; }
+    html:not(.has-webgl) .flow-body { grid-template-rows: 1fr; opacity: 1; }
+    html:not(.has-webgl) .flow-step .fill { transform: scaleY(1); }
+
+    /* Everything after the 3D part is solid and covers the canvas */
+    .after-flow { position: relative; z-index: 2; background: var(--white); }
+
+    /* ============ FEATURES ============ */
+    .features { background: var(--bg); }
+    .features-head { display: flex; justify-content: space-between; align-items: end; gap: 32px; flex-wrap: wrap; }
+    /* 3D cards: tilt toward the mouse, layered depth, spinning icon, flip-in entrance */
+    .feature-grid { margin-top: 56px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .feature {
+      --rx: 0deg; --ry: 0deg; --lift: 0px; --gx: 50%; --gy: 50%;
+      position: relative; transform-style: preserve-3d;
+      background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 30px 26px;
+      transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry)) translateZ(var(--lift));
+      transition: transform .6s cubic-bezier(.2,.8,.2,1), box-shadow .3s ease, border-color .3s ease, opacity .7s ease;
+    }
+    .feature.tilting { transition: transform .1s linear, box-shadow .3s ease, border-color .3s ease; }
+    .feature:hover { --lift: 18px; box-shadow: 0 30px 50px -28px rgba(30,58,117,.45); border-color: #cfd9ea; }
+    /* glow that follows the cursor */
+    .feature::after {
+      content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0;
+      background: radial-gradient(circle at var(--gx) var(--gy), rgba(95,196,164,.18), rgba(58,99,176,.06) 35%, transparent 60%);
+      transition: opacity .3s ease;
+    }
+    .feature:hover::after { opacity: 1; }
+    /* depth layers */
+    .feature .icon {
+      width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center;
+      background: linear-gradient(140deg, #e3f5ef, #dfe8f7); color: var(--blue); font-size: 21px;
+      box-shadow: 0 1px 0 #cfe3ea, 0 2px 0 #c4d8e6, 0 3px 0 #b9cde2, 0 4px 0 #afc3dc, 0 12px 20px -8px rgba(30,58,117,.4);
+      transform: translateZ(30px);
+      transition: transform .9s cubic-bezier(.2,.8,.2,1);
+    }
+    .feature:hover .icon { transform: translateZ(30px) rotateY(360deg); }
+    .feature h3 { margin-top: 22px; font-size: 19px; font-weight: 700; color: var(--ink); transform: translateZ(20px); }
+    .feature p { margin-top: 10px; color: var(--muted); font-size: 15px; transform: translateZ(10px); }
+    /* entrance: cards flip up into place */
+    .feature.reveal { transform-origin: 50% 0; }
+    .feature.reveal:not(.in) { opacity: 0; transform: perspective(900px) rotateX(-40deg) translateY(30px); }
+    .feature.reveal.in { opacity: 1; transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry)) translateZ(var(--lift)); }
+
+    /* ============ PRODUCTS ============ */
+    .products { background: var(--navy-950); color: #fff; position: relative; overflow: hidden; }
+    .products::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(60% 50% at 50% 0%, rgba(58,99,176,.25), transparent 70%);
+    }
+    .products .container { position: relative; }
+    .products .eyebrow { color: var(--teal); }
+    .products .section-lead { color: #94a3b8; }
+    .product-grid { margin-top: 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .product {
+      display: flex; flex-direction: column; border-radius: var(--radius); overflow: hidden;
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.1);
+      transition: transform .3s ease, border-color .3s ease, background .3s ease;
+    }
+    .product:hover { transform: translateY(-6px); border-color: rgba(95,196,164,.45); background: rgba(255,255,255,.06); }
+    .product-logo { height: 150px; display: grid; place-items: center; background: rgba(255,255,255,.95); }
+    .product-logo img { max-height: 92px; width: auto; }
+    .product-body { padding: 28px; display: flex; flex-direction: column; flex: 1; }
+    .product-body .kind { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--teal); font-weight: 600; }
+    .product-body h3 { margin-top: 8px; font-size: 24px; font-weight: 800; }
+    .product-body p { margin-top: 12px; color: #a5b1c5; font-size: 15px; flex: 1; }
+    .product-body .more { margin-top: 24px; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; color: #fff; }
+    .product-body .more i { transition: transform .25s; font-size: 13px; }
+    .product:hover .more i { transform: translateX(4px); }
+
+    /* ============ STANDARDS BAND ============ */
+    .standards-card {
+      position: relative; overflow: hidden; border-radius: 22px; margin: 112px auto; color: #fff;
+      background: linear-gradient(120deg, var(--navy) 0%, var(--blue) 60%, #3f8f8a 100%);
+      display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; padding: 64px;
+    }
+    .standards-card::after {
+      content: ""; position: absolute; right: -120px; top: -120px; width: 420px; height: 420px; pointer-events: none;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-110 -110 220 220'%3E%3Cg fill='none' stroke='white' stroke-opacity='.18' stroke-width='.8'%3E%3Cpolygon points='0,-100 86.6,-50 86.6,50 0,100 -86.6,50 -86.6,-50'/%3E%3Cpolygon points='0,-75 65,-37.5 65,37.5 0,75 -65,37.5 -65,-37.5' transform='rotate(12)'/%3E%3Cpolygon points='0,-52 45,-26 45,26 0,52 -45,26 -45,-26' transform='rotate(24)'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat;
+    }
+    .standards-card h2 { font-size: clamp(28px, 3.6vw, 42px); font-weight: 800; line-height: 1.15; }
+    .standards-card p { margin-top: 16px; color: rgba(255,255,255,.82); font-size: 17px; max-width: 560px; }
+    .standards-card .btn { margin-top: 28px; background: #fff; color: var(--navy); }
+    .stat-list { display: grid; gap: 18px; align-content: center; position: relative; z-index: 1; }
+    .stat { padding: 20px 22px; border-radius: 12px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18); }
+    .stat strong { display: block; font-family: "Raleway", sans-serif; font-size: 28px; font-weight: 800; }
+    .stat span { font-size: 14px; color: rgba(255,255,255,.8); }
+
+    /* ============ LEADERSHIP ============ */
+    .leaders { background: var(--bg); }
+    .leader-grid { margin-top: 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .leader { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 30px; }
+    .leader-top { display: flex; align-items: center; gap: 16px; }
+    .leader-top img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; background: var(--bg); }
+    .leader-top strong { display: block; font-size: 17px; }
+    .leader-top span { font-size: 14px; color: var(--blue); font-weight: 600; }
+    .leader p { margin-top: 18px; color: var(--muted); font-size: 15px; }
+
+    /* ============ FAQ ============ */
+    .faq-layout { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 72px; align-items: start; }
+    .faq-item { border-top: 1px solid var(--line); }
+    .faq-item:last-child { border-bottom: 1px solid var(--line); }
+    .faq-item summary {
+      list-style: none; cursor: pointer; padding: 26px 0; display: flex; justify-content: space-between; align-items: center; gap: 20px;
+      font-family: "Raleway", sans-serif; font-weight: 700; font-size: 19px; color: var(--navy);
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary i { color: var(--blue); transition: transform .3s ease; font-size: 14px; }
+    .faq-item[open] summary i { transform: rotate(180deg); }
+    .faq-item .answer { padding: 0 0 26px; color: var(--muted); max-width: 620px; }
+
+    /* ============ CTA + FOOTER ============ */
+    .cta { background: var(--navy-950); color: #fff; text-align: center; padding: 104px 0; position: relative; overflow: hidden; }
+    .cta::before { content: ""; position: absolute; inset: 0; background: radial-gradient(50% 70% at 50% 100%, rgba(95,196,164,.2), transparent 70%); pointer-events: none; }
+    .cta .container { position: relative; }
+    .cta h2 { font-size: clamp(30px, 4.2vw, 50px); font-weight: 800; max-width: 820px; margin: 0 auto; line-height: 1.12; }
+    .cta p { color: #94a3b8; margin: 18px auto 0; max-width: 560px; font-size: 17px; }
+    .cta .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 32px; }
+    .site-footer { background: #040a17; color: #94a3b8; padding: 64px 0 32px; }
+    .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.3fr; gap: 40px; }
+    .site-footer h4 { margin: 0 0 18px; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: #fff; }
+    .site-footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; font-size: 15px; }
+    .site-footer a:hover { color: #fff; }
+    .footer-brand strong { font-family: "Raleway", sans-serif; color: #fff; font-size: 20px; }
+    .footer-brand p { margin-top: 12px; font-size: 15px; max-width: 300px; }
+    .footer-bottom { margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.08); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 13px; }
+
+    /* Reveal on scroll */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 1024px) {
+      .feature-grid { grid-template-columns: repeat(2, 1fr); }
+      .product-grid, .leader-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 860px) {
+      .nav, .nav-actions { display: none; }
+      .menu-toggle { display: block; }
+      .section { padding: 80px 0; }
+      .hero3d { padding-top: calc(var(--header-h) + 6vh); }
+      .hero3d-lead { font-size: 16px; }
+      .hero3d .hero-ctas .btn { padding: 11px 18px; font-size: 14px; }
+      .faq-layout { grid-template-columns: 1fr; gap: 40px; }
+      .standards-card { grid-template-columns: 1fr; padding: 40px 28px; margin: 80px auto; }
+      /* on phones the emblem sits behind the steps, so give the text a panel */
+      html.has-webgl .flow-col {
+        background: rgba(6,14,31,.72); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+        border: 1px solid rgba(255,255,255,.08); border-radius: 18px; padding: 24px 20px;
       }
+      .flow-title { font-size: 26px; margin-bottom: 18px; }
+      .flow-step h3 { font-size: 18px; }
+    }
+    @media (max-width: 600px) {
+      .container { padding: 0 16px; }
+      .feature-grid, .product-grid, .leader-grid, .footer-grid { grid-template-columns: 1fr; }
+      .hero3d h1 { font-size: 38px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- 3D background layers -->
+  <div class="scene-bg" aria-hidden="true"></div>
+  <canvas id="webgl" aria-hidden="true"></canvas>
+  <div class="emblem-caption" id="emblemCaption" aria-hidden="true">
+    <strong>Avanzo</strong>
+    <span>Your shield in the digital realm</span>
+  </div>
 
-      .content-overlay {
-        position: relative;
-        z-index: 1;
-      }
-
-      
-      .radial-gradient-bg {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -2;
-        background: radial-gradient(
-          125% 125% at 50% 90%,
-          #fff 40%,
-          #475569 100%
-        );
-        pointer-events: none;
-      }
-      .top-fade-grid {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        background-image: linear-gradient(
-            to right,
-            #e2e8f0 1px,
-            transparent 1px
-          ),
-          linear-gradient(to bottom, #e2e8f0 1px, transparent 1px);
-        background-size: 20px 30px;
-        -webkit-mask-image: radial-gradient(
-          ellipse 70% 60% at 50% 0%,
-          #000 60%,
-          transparent 100%
-        );
-        mask-image: radial-gradient(
-          ellipse 70% 60% at 50% 0%,
-          #000 60%,
-          transparent 100%
-        );
-        pointer-events: none;
-      }
-
-  
-      .animate-on-scroll {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-      }
-      .is-visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      .hover-lift {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-      .hover-lift:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 12px 24px rgba(100, 116, 139, 0.2);
-      }
-
-      
-
-      
-      .box {
-        animation-duration: 20s;
-        animation-iteration-count: infinite;
-        animation-timing-function: linear;
-      }
-
-      .animate-box-1 {
-        top: 10%;
-        left: 10%;
-        animation-name: float-box-1;
-      }
-
-      .animate-box-2 {
-        top: 20%;
-        right: 15%;
-        animation-name: float-box-2;
-      }
-
-      .animate-box-3 {
-        top: 60%;
-        left: 20%;
-        animation-name: float-box-3;
-      }
-
-      .animate-box-4 {
-        top: 30%;
-        right: 25%;
-        animation-name: float-box-4;
-      }
-
-      .animate-box-5 {
-        top: 70%;
-        left: 60%;
-        animation-name: float-box-5;
-      }
-
-      .animate-box-6 {
-        top: 15%;
-        left: 70%;
-        animation-name: float-box-6;
-      }
-
-      .animate-box-7 {
-        top: 80%;
-        right: 10%;
-        animation-name: float-box-7;
-      }
-
-      .animate-box-8 {
-        top: 45%;
-        left: 40%;
-        animation-name: float-box-8;
-      }
-
-      .animate-box-9 {
-        top: 25%;
-        right: 60%;
-        animation-name: float-box-9;
-      }
-
-      .animate-box-10 {
-        top: 55%;
-        left: 80%;
-        animation-name: float-box-10;
-      }
-
-      @keyframes float-box-1 {
-        0%,
-        100% {
-          transform: translate(0, 0) rotate(0deg);
-        }
-        25% {
-          transform: translate(20px, -20px) rotate(90deg);
-        }
-        50% {
-          transform: translate(0, -40px) rotate(180deg);
-        }
-        75% {
-          transform: translate(-20px, -20px) rotate(270deg);
-        }
-      }
-
-      @keyframes float-box-2 {
-        0%,
-        100% {
-          transform: translate(0, 0) rotate(0deg);
-        }
-        25% {
-          transform: translate(-30px, 10px) rotate(-90deg);
-        }
-        50% {
-          transform: translate(-60px, 0) rotate(-180deg);
-        }
-        75% {
-          transform: translate(-30px, -10px) rotate(-270deg);
-        }
-      }
-
-      @keyframes float-box-3 {
-        0%,
-        100% {
-          transform: translate(0, 0) rotate(0deg);
-        }
-        25% {
-          transform: translate(25px, 15px) rotate(45deg);
-        }
-        50% {
-          transform: translate(50px, 30px) rotate(90deg);
-        }
-        75% {
-          transform: translate(25px, 15px) rotate(135deg);
-        }
-      }
-
-      @keyframes float-box-4 {
-        0%,
-        100% {
-          transform: translate(0, 0) rotate(0deg);
-        }
-        25% {
-          transform: translate(-15px, -25px) rotate(-45deg);
-        }
-        50% {
-          transform: translate(-30px, -50px) rotate(-90deg);
-        }
-        75% {
-          transform: translate(-15px, -25px) rotate(-135deg);
-        }
-      }
-
-      @keyframes float-box-5 {
-        0%,
-        100% {
-          transform: translate(0, 0) rotate(0deg);
-        }
-        25% {
-          transform: translate(20px, -15px) rotate(60deg);
-        }
-        50% {
-          transform: translate(40px, -30px) rotate(120deg);
-        }
-        75% {
-          transform: translate(20px, -15px) rotate(180deg);
-        }
-      }
-
-      @keyframes float-box-6 {
-        0%,
-        100% {
-          transform: translate(0, 0) rotate(0deg);
-        }
-        25% {
-          transform: translate(-20px, 20px) rotate(-60deg);
-        }
-        50% {
-          transform: translate(-40px, 40px) rotate(-120deg);
-        }
-        75% {
-          transform: translate(-20px, 20px) rotate(-180deg);
-        }
-      }
-
-      @keyframes float-box-7 {
-        0%,
-        100% {
-          transform: translate(0, 0) rotate(0deg);
-        }
-        25% {
-          transform: translate(15px, -25px) rotate(30deg);
-        }
-        50% {
-          transform: translate(30px, -50px) rotate(60deg);
-        }
-        75% {
-          transform: translate(15px, -25px) rotate(90deg);
-        }
-      }
-
-      @keyframes float-box-8 {
-        0%,
-        100% {
-          transform: translate(0, 0) rotate(0deg);
-        }
-        25% {
-          transform: translate(-25px, 15px) rotate(-30deg);
-        }
-        50% {
-          transform: translate(-50px, 30px) rotate(-60deg);
-        }
-        75% {
-          transform: translate(-25px, 15px) rotate(-90deg);
-        }
-      }
-
-      @keyframes float-box-9 {
-        0%,
-        100% {
-          transform: translate(0, 0) rotate(0deg);
-        }
-        25% {
-          transform: translate(30px, -20px) rotate(75deg);
-        }
-        50% {
-          transform: translate(60px, -40px) rotate(150deg);
-        }
-        75% {
-          transform: translate(30px, -20px) rotate(225deg);
-        }
-      }
-
-      @keyframes float-box-10 {
-        0%,
-        100% {
-          transform: translate(0, 0) rotate(0deg);
-        }
-        25% {
-          transform: translate(-35px, 25px) rotate(-75deg);
-        }
-        50% {
-          transform: translate(-70px, 50px) rotate(-150deg);
-        }
-        75% {
-          transform: translate(-35px, 25px) rotate(-225deg);
-        }
-      }
-      
-      @keyframes pulseGlow {
-        0%,
-        100% {
-          filter: drop-shadow(0 8px 18px rgba(15, 23, 42, 0.35)) brightness(1);
-        }
-        50% {
-          filter: drop-shadow(0 12px 24px rgba(14, 165, 233, 0.35))
-            brightness(1.05);
-        }
-      }
-      /* 3D Cyber Cube */
-      .cyber-3d-corner {
-        position: absolute;
-        inset: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 10;
-        pointer-events: none;
-      }
-      .cube-scene {
-        width: 200px;
-        height: 200px;
-        perspective: 900px;
-        filter: drop-shadow(0 8px 18px rgba(15, 23, 42, 0.35));
-        animation: pulseGlow 3.5s ease-in-out infinite;
-      }
-      .cube {
-        width: 100%;
-        height: 100%;
-        position: relative;
-        transform-style: preserve-3d;
-        animation: rotateCube 14s linear infinite;
-      }
-      .cube__face {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        border: 1px solid rgba(59, 130, 246, 0.45);
-        background: linear-gradient(
-              90deg,
-              rgba(59, 130, 246, 0.2) 1px,
-              transparent 1px
-            )
-            0 0/14px 14px,
-          linear-gradient(rgba(14, 165, 233, 0.18) 1px, transparent 1px) 0 0/14px
-            14px,
-          radial-gradient(
-            60% 60% at 50% 40%,
-            rgba(56, 189, 248, 0.18),
-            rgba(59, 130, 246, 0.08)
-          );
-        backdrop-filter: blur(2px);
-        -webkit-backdrop-filter: blur(2px);
-      }
-      .cube__face--front {
-        transform: rotateY(0deg) translateZ(100px);
-      }
-      .cube__face--back {
-        transform: rotateY(180deg) translateZ(100px);
-      }
-      .cube__face--right {
-        transform: rotateY(90deg) translateZ(100px);
-      }
-      .cube__face--left {
-        transform: rotateY(-90deg) translateZ(100px);
-      }
-      .cube__face--top {
-        transform: rotateX(90deg) translateZ(100px);
-      }
-      .cube__face--bottom {
-        transform: rotateX(-90deg) translateZ(100px);
-      }
-      .cube-badge {
-        position: absolute;
-        inset: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #e2e8f0;
-        font-size: 28px;
-        text-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
-        transform: translateZ(103px);
-      }
-      @keyframes rotateCube {
-        0% {
-          transform: rotateX(0deg) rotateY(0deg);
-        }
-        50% {
-          transform: rotateX(180deg) rotateY(180deg);
-        }
-        100% {
-          transform: rotateX(360deg) rotateY(360deg);
-        }
-      }
-    </style>
-  </head>
-  <body>
-
-    <div class="animated-bg">
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-    </div>
-
-    <!-- Radial Gradient Background from Bottom -->
-    <div class="radial-gradient-bg"></div>
-
-    <!-- Top Fade Grid Background -->
-    <div class="top-fade-grid"></div>
-
-    <div class="content-overlay">
-      <!-- Header Navigation -->
-      <header
-        class="border-b border-gray-200 bg-white/80 backdrop-blur-sm sticky top-0 z-50"
-      >
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="flex items-center justify-between h-16">
-            <div class="flex items-center space-x-8">
-              <a href="#">
-                <img
-                  class="h-20 w-auto"
-                  src="images/logo.png"
-                  alt="Avanzo Logo"
-                />
-              </a>
-              <nav class="hidden md:flex items-center space-x-8">
-                <a
-                  href="#"
-                  class="text-gray-600 hover:text-gray-900 font-medium transition-colors"
-                  >Home</a
-                >
-                <a
-                  href="https://avanzo.co.in/about.html"
-                  class="text-gray-600 hover:text-gray-900 font-medium transition-colors"
-                  >About</a
-                >
-                <a
-                  href="product.html"
-                  class="text-gray-600 hover:text-gray-900 font-medium transition-colors"
-                  >Our Products</a
-                >
-
-                <a
-                  href="client.html"
-                  class="text-gray-600 hover:text-gray-900 font-medium transition-colors"
-                  >Our Clients</a
-                >
-                <a
-                  href="contact.html"
-                  class="text-gray-600 hover:text-gray-900 font-medium transition-colors"
-                  >Contact</a
-                >
-              </nav>
-            </div>
-            <div class="hidden md:flex items-center space-x-6">
-              <!-- <a
-                href="#"
-                class="text-gray-600 hover:text-gray-900 font-medium transition-colors"
-                >Login</a
-              > -->
-              <!-- <a
-                href="#"
-                class="px-4 py-2 bg-[#144f6d] text-white text-sm font-semibold rounded-md hover:bg-[#144f6d] hover-lift"
-              >
-                Login
-              </a> -->
-            </div>
-            <div class="md:hidden">
-              <button class="p-2 rounded-md text-gray-600 hover:bg-gray-100">
-                <svg
-                  class="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  ></path>
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <!-- Hero Section -->
-      <main>
-        <div
-          class="container mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 lg:py-32"
-        >
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div class="text-center lg:text-left animate-on-scroll is-visible">
-              <h1
-                class="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#144f6d] tracking-tight leading-tight"
-              >
-                Advanced Digital Transformations for Modern Enterprises
-              </h1>
-              <p class="mt-6 text-lg text-gray-600 font-sans">
-                Protect your digital assets with Avanzo's cutting-edge security
-                platform. Comprehensive threat detection, real-time monitoring,
-                and enterprise-grade protection.
-              </p>
-              <div
-                class="mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4"
-              >
-                <a
-                  href="consultation.html"
-                  class="w-full sm:w-auto px-6 py-3 bg-[#144f6d] text-white font-semibold rounded-md shadow-sm hover:bg-[#144f6d] hover-lift"
-                >
-Get Consultation                
-</a>
-                <a
-                  href="product.html"
-                  class="w-full sm:w-auto px-6 py-3 bg-white text-[#144f6d] font-semibold rounded-md border border-gray-300 shadow-sm hover:bg-gray-50 hover-lift"
-                >
-                  View Products
-                </a>
-              </div>
-            </div>
-            <div
-              class="relative w-full h-64 sm:h-80 lg:h-96 overflow-hidden"
-              style="transition-delay: 200ms"
-            >
-              <div
-                class="absolute inset-0 from-black/20 via-transparent to-transparent rounded-xl"
-              ></div>
-
-              <div class="cyber-3d-corner">
-                <div class="cube-scene">
-                  <div class="cube">
-                    <div class="cube__face cube__face--front">
-                      <span class="cube-badge"
-                        ><i class="fa-solid fa-lock"></i
-                      ></span>
-                    </div>
-                    <div class="cube__face cube__face--back">
-                      <span class="cube-badge"
-                        ><i class="fa-solid fa-key"></i
-                      ></span>
-                    </div>
-                    <div class="cube__face cube__face--right">
-                      <span class="cube-badge"
-                        ><i class="fa-solid fa-shield"></i
-                      ></span>
-                    </div>
-                    <div class="cube__face cube__face--left">
-                      <span class="cube-badge"
-                        ><i class="fa-solid fa-bug-slash"></i
-                      ></span>
-                    </div>
-                    <div class="cube__face cube__face--top">
-                      <span class="cube-badge"
-                        ><i class="fa-solid fa-fingerprint"></i
-                      ></span>
-                    </div>
-                    <div class="cube__face cube__face--bottom">
-                      <span class="cube-badge"
-                        ><i class="fa-solid fa-network-wired"></i
-                      ></span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
-
-      <!-- Features Section -->
-      <section class="bg-gray-50/80 backdrop-blur-sm py-20 sm:py-24 lg:py-32">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="text-center max-w-3xl mx-auto animate-on-scroll">
-            <h2
-              class="text-3xl sm:text-4xl font-bold text-[#1a4c8a] tracking-tight"
-            >
-              Complete Security Suite
-            </h2>
-            <p class="mt-4 text-lg text-gray-600 font-sans">
-              Everything you need to secure your enterprise infrastructure.
-            </p>
-          </div>
-          <div
-            class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            <!-- Cards with staggered animation -->
-            <div
-              class="bg-white/80 backdrop-blur-sm p-8 rounded-lg border border-gray-200 shadow-sm hover-lift animate-on-scroll"
-              style="transition-delay: 100ms"
-            >
-              <div class="inline-block p-3 bg-gray-100 rounded-md">
-                <i class="fa-solid fa-shield-halved text-2xl text-gray-700"></i>
-              </div>
-              <h3 class="mt-6 text-lg font-semibold text-gray-900">
-                Threat Detection
-              </h3>
-              <p class="mt-2 text-base text-gray-600 font-sans">
-                Advanced AI-powered threat detection and automated response.
-              </p>
-            </div>
-            <div
-              class="bg-white/80 backdrop-blur-sm p-8 rounded-lg border border-gray-200 shadow-sm hover-lift animate-on-scroll"
-              style="transition-delay: 200ms"
-            >
-              <div class="inline-block p-3 bg-gray-100 rounded-md">
-                <i class="fa-solid fa-lock text-2xl text-gray-700"></i>
-              </div>
-              <h3 class="mt-6 text-lg font-semibold text-gray-900">
-                Data Encryption
-              </h3>
-              <p class="mt-2 text-base text-gray-600 font-sans">
-                Military-grade encryption for data at rest and in transit.
-              </p>
-            </div>
-            <div
-              class="bg-white/80 backdrop-blur-sm p-8 rounded-lg border border-gray-200 shadow-sm hover-lift animate-on-scroll"
-              style="transition-delay: 300ms"
-            >
-              <div class="inline-block p-3 bg-gray-100 rounded-md">
-                <i class="fa-solid fa-chart-simple text-2xl text-gray-700"></i>
-              </div>
-              <h3 class="mt-6 text-lg font-semibold text-gray-900">
-                Analytics Dashboard
-              </h3>
-              <p class="mt-2 text-base text-gray-600 font-sans">
-                Comprehensive security analytics and detailed reporting.
-              </p>
-            </div>
-            <div
-              class="bg-white/80 backdrop-blur-sm p-8 rounded-lg border border-gray-200 shadow-sm hover-lift animate-on-scroll"
-              style="transition-delay: 400ms"
-            >
-              <div class="inline-block p-3 bg-gray-100 rounded-md">
-                <i class="fa-solid fa-users text-2xl text-gray-700"></i>
-              </div>
-              <h3 class="mt-6 text-lg font-semibold text-gray-900">
-                Access Management
-              </h3>
-              <p class="mt-2 text-base text-gray-600 font-sans">
-                Role-based access control with multi-factor authentication.
-              </p>
-            </div>
-            <div
-              class="bg-white/80 backdrop-blur-sm p-8 rounded-lg border border-gray-200 shadow-sm hover-lift animate-on-scroll"
-              style="transition-delay: 500ms"
-            >
-              <div class="inline-block p-3 bg-gray-100 rounded-md">
-                <i class="fa-solid fa-cloud text-2xl text-gray-700"></i>
-              </div>
-              <h3 class="mt-6 text-lg font-semibold text-gray-900">
-                Cloud Security
-              </h3>
-              <p class="mt-2 text-base text-gray-600 font-sans">
-                Automated compliance and security for cloud infrastructure.
-              </p>
-            </div>
-            <div
-              class="bg-white/80 backdrop-blur-sm p-8 rounded-lg border border-gray-200 shadow-sm hover-lift animate-on-scroll"
-              style="transition-delay: 600ms"
-            >
-              <div class="inline-block p-3 bg-gray-100 rounded-md">
-                <i class="fa-solid fa-headset text-2xl text-gray-700"></i>
-              </div>
-              <h3 class="mt-6 text-lg font-semibold text-gray-900">
-                24/7 Support
-              </h3>
-              <p class="mt-2 text-base text-gray-600 font-sans">
-                Round-the-clock expert support and incident response services.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Products Section -->
-      <section class="relative py-20 sm:py-24 lg:py-32 overflow-hidden">
-        <!-- Background Boxes Effect -->
-        <div class="absolute inset-0 w-full h-full bg-slate-900 z-0"></div>
-        <div
-          class="absolute inset-0 w-full h-full bg-slate-900 z-10 [mask-image:radial-gradient(transparent,white)] pointer-events-none"
-        ></div>
-
-        <!-- Animated Boxes -->
-        <div class="absolute inset-0 w-full h-full z-5">
-          <div
-            class="box absolute h-20 w-20 rounded-lg bg-slate-800 opacity-20 animate-box-1"
-          ></div>
-          <div
-            class="box absolute h-16 w-16 rounded-lg bg-slate-700 opacity-30 animate-box-2"
-          ></div>
-          <div
-            class="box absolute h-24 w-24 rounded-lg bg-slate-600 opacity-25 animate-box-3"
-          ></div>
-          <div
-            class="box absolute h-12 w-12 rounded-lg bg-slate-800 opacity-20 animate-box-4"
-          ></div>
-          <div
-            class="box absolute h-20 w-20 rounded-lg bg-slate-700 opacity-30 animate-box-5"
-          ></div>
-          <div
-            class="box absolute h-16 w-16 rounded-lg bg-slate-600 opacity-25 animate-box-6"
-          ></div>
-          <div
-            class="box absolute h-28 w-28 rounded-lg bg-slate-800 opacity-20 animate-box-7"
-          ></div>
-          <div
-            class="box absolute h-14 w-14 rounded-lg bg-slate-700 opacity-30 animate-box-8"
-          ></div>
-          <div
-            class="box absolute h-20 w-20 rounded-lg bg-slate-600 opacity-25 animate-box-9"
-          ></div>
-          <div
-            class="box absolute h-18 w-18 rounded-lg bg-slate-800 opacity-20 animate-box-10"
-          ></div>
-        </div>
-
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
-          <div class="text-center max-w-3xl mx-auto animate-on-scroll">
-            <h2
-              class="text-3xl sm:text-4xl font-bold text-white tracking-tight"
-            >
-              Our Security Products
-            </h2>
-            <p class="mt-4 text-lg text-neutral-300 font-sans">
-              Comprehensive cybersecurity solutions for your business.
-            </p>
-          </div>
-          <div
-            class="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-6xl mx-auto"
-          >
-            <!-- Product Card 1: SecureShield Enterprise -->
-            <div
-              class="bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 shadow-lg overflow-hidden flex flex-col hover-lift animate-on-scroll"
-              style="transition-delay: 100ms"
-            >
-              <div
-                class="bg-slate-800/50 h-32 flex items-center justify-center"
-              >
-              <img src="images/product.png" alt="Avanzo Cyber Sol Logo" class="h-20" /> 
-
-              </div>
-              <div class="p-6 flex-grow flex flex-col">
-                <h3 class="text-xl font-semibold text-white">
-      CyberSol                </h3>
-                <p class="mt-2 text-sm text-slate-300 font-sans">
-                CyberSol was designed as a comprehensive cybersecurity solution to address modern organizations' evolving threats. Developed through in-depth analysis, it helps protect sensitive data, ensure compliance, maintain operations, and safeguard reputation amid rising cyberattacks.<br><br><br>
-
-                </p>
-                <!-- <ul class="mt-4 space-y-2 text-slate-300 font-sans">
-                  <li class="flex items-center">
-                    <svg
-                      class="w-4 h-4 text-blue-400 flex-shrink-0"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                    <span class="ml-2 text-sm"
-                      >Real-time threat monitoring</span
-                    >
-                  </li>
-                  <li class="flex items-center">
-                    <svg
-                      class="w-4 h-4 text-blue-400 flex-shrink-0"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                    <span class="ml-2 text-sm"
-                      >AI-powered malware detection</span
-                    >
-                  </li>
-                  <li class="flex items-center">
-                    <svg
-                      class="w-4 h-4 text-blue-400 flex-shrink-0"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                    <span class="ml-2 text-sm">Automated response system</span>
-                  </li>
-                </ul> -->
-                <div class="mt-auto pt-4">
-                  <a
-                    href="cybersol.html"
-                    class="inline-block px-5 py-2.5 bg-blue-600 text-white text-sm font-semibold rounded-md shadow-sm hover:bg-blue-700 transition-colors"
-                    >Learn More</a
-                  >
-                </div>
-              </div>
-            </div>
-            <!-- Product Card 2: CloudGuard Pro -->
-            <div
-              class="bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 shadow-lg overflow-hidden flex flex-col hover-lift animate-on-scroll"
-              style="transition-delay: 200ms"
-            >
-              <div
-                class="bg-slate-800/50 h-32 flex items-center justify-center"
-              >
-              <img src="images/Cyber Hulk Logo with Box.png" alt="Avanzo Cyber Sol Logo" class="h-20" /> 
-
-              </div>
-              <div class="p-6 flex-grow flex flex-col">
-                <h3 class="text-xl font-semibold text-white">Cyber Hulk</h3>
-                <p class="mt-2 text-sm text-slate-300 font-sans">
-                                  Cyber Hulk is a free, user-friendly app that simplifies cybersecurity by providing clear answers to your security questions. Whether you're a beginner or an expert, it offers up-to-date insights on threats like malware, phishing, and ransomware. The app features real-time threat alerts, interactive tools like a password strength checker and network scanner, and educational content, including guides and news updates. With Cyber Hulk, staying informed and improving your digital security has never been easier.
-
-                </p>
-                <!-- <ul class="mt-4 space-y-2 text-slate-300 font-sans">
-                  <li class="flex items-center">
-                    <svg
-                      class="w-4 h-4 text-blue-400 flex-shrink-0"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                    <span class="ml-2 text-sm">Multi-cloud protection</span>
-                  </li>
-                  <li class="flex items-center">
-                    <svg
-                      class="w-4 h-4 text-blue-400 flex-shrink-0"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                    <span class="ml-2 text-sm">Compliance automation</span>
-                  </li>
-                  <li class="flex items-center">
-                    <svg
-                      class="w-4 h-4 text-blue-400 flex-shrink-0"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                    <span class="ml-2 text-sm">Threat intelligence feeds</span>
-                  </li>
-                </ul> -->
-                <div class="mt-auto pt-4">
-                  <a
-                    href="https://cyberhulk.avanzosolutions.in/"
-                    class="inline-block px-5 py-2.5 bg-blue-600 text-white text-sm font-semibold rounded-md shadow-sm hover:bg-blue-700 transition-colors"
-                    >Learn More</a
-                  >
-                </div>
-              </div>
-            </div>
-            <div
-              class="bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 shadow-lg overflow-hidden flex flex-col hover-lift animate-on-scroll"
-              style="transition-delay: 300ms"
-            >
-              <div
-                class="bg-slate-800/50 h-32 flex items-center justify-center"
-              >
-            <img src="images/myciso png.png" alt="Avanzo Cyber Sol Logo" class="h-20" /> 
-              </div>
-              <div class="p-6 flex-grow flex flex-col">
-                <h3 class="text-xl font-semibold text-white">
-MyCiso                </h3>
-                <p class="mt-2 text-sm text-slate-300 font-sans">
-                myciso offers advanced endpoint protection, specifically engineered to defend against the most sophisticated cyber threats. It provides real-time monitoring and response capabilities, utilizing machine learning to detect and neutralize malware, ransomware, and zero-day exploits before they can compromise your systems. Ideal for businesses of all sizes, CyberGuard ensures that every device connected to your network is a secure fortress against attacks.
-
-                </p>
-                <!-- <ul class="mt-4 space-y-2 text-slate-300 font-sans">
-                  <li class="flex items-center">
-                    <svg
-                      class="w-4 h-4 text-blue-400 flex-shrink-0"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                    <span class="ml-2 text-sm"
-                      >Real-time threat monitoring</span
-                    >
-                  </li>
-                  <li class="flex items-center">
-                    <svg
-                      class="w-4 h-4 text-blue-400 flex-shrink-0"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                    <span class="ml-2 text-sm"
-                      >AI-powered malware detection</span
-                    >
-                  </li>
-                  <li class="flex items-center">
-                    <svg
-                      class="w-4 h-4 text-blue-400 flex-shrink-0"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                    <span class="ml-2 text-sm">Automated response system</span>
-                  </li>
-                </ul> -->
-                <div class="mt-auto pt-4">
-                  <a
-                    href="https://myciso.avanzosolutions.in/"
-                    class="inline-block px-5 py-2.5 bg-blue-600 text-white text-sm font-semibold rounded-md shadow-sm hover:bg-blue-700 transition-colors"
-                    >Learn More</a
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Testimonials Section -->
-      <section
-        class="bg-[#f9fafb] relative py-12 sm:py-16 lg:py-20 overflow-hidden"
-      >
-        <!-- Diagonal Fade Grid Background - Top Left -->
-        <div
-          class="absolute inset-0 z-0"
-          style="
-            background-image: linear-gradient(
-                to right,
-                #d1d5db 1px,
-                transparent 1px
-              ),
-              linear-gradient(to bottom, #d1d5db 1px, transparent 1px);
-            background-size: 32px 32px;
-            -webkit-mask-image: radial-gradient(
-              ellipse 80% 80% at 0% 0%,
-              #000 50%,
-              transparent 90%
-            );
-            mask-image: radial-gradient(
-              ellipse 80% 80% at 0% 0%,
-              #000 50%,
-              transparent 90%
-            );
-          "
-        ></div>
-
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
-          <div class="text-center animate-on-scroll">
-            <h2
-              class="text-3xl font-bold tracking-tight text-[#1a4c8a] sm:text-4xl"
-            >
-              Trusted by Industry Leaders
-            </h2>
-            <p class="mt-4 text-lg leading-8 text-gray-600 font-sans">
-              See what our clients say about Avanzo's security solutions.
-            </p>
-          </div>
-          <div
-            class="mx-auto mt-16 grid max-w-lg grid-cols-1 gap-8 lg:max-w-none lg:grid-cols-3"
-          >
-            <div
-              class="rounded-lg border border-gray-200 bg-gray-50/80 backdrop-blur-sm p-8 hover-lift animate-on-scroll"
-              style="transition-delay: 100ms"
-            >
-              <div class="flex items-center">
-                <img
-                  class="h-12 w-12 rounded-full"
-                  src="images/testimonial2.png"
-                  alt="Sarah Johnson"
-                />
-                <div class="ml-4">
-                  <p class="text-base font-semibold text-gray-900">
-                    Pattathil Dhanya Menon
-                  </p>
-                  <p class="text-sm text-gray-600 font-sans">Founder</p>
-                </div>
-              </div>
-              <blockquote class="mt-6 text-gray-700 font-sans">
-                Dr. Pattathil Dhanya Menon, India’s first woman cybercrime investigator, is the visionary founder of the company, driven by her passion for innovation and justice in the digital world. Guided by resilience, lifelong learning, and an unwavering commitment to cybersecurity since 2003, she has built a legacy that continues to inspire professionals across the country.
-              </blockquote>
-            </div>
-            <div
-              class="rounded-lg border border-gray-200 bg-gray-50/80 backdrop-blur-sm p-8 hover-lift animate-on-scroll"
-              style="transition-delay: 200ms"
-            >
-              <div class="flex items-center">
-                <img
-                  class="h-12 w-12 rounded-full"
-                  src="images/testimonial1.png"
-                  alt="Michael Chen"
-                />
-                <div class="ml-4">
-                  <p class="text-base font-semibold text-gray-900">
-                    Ajith Kumar Parakkat
-                  </p>
-                  <p class="text-sm text-gray-600 font-sans">CEO</p>
-                </div>
-              </div>
-              <blockquote class="mt-6 text-gray-700 font-sans">
-                Mr. Ajith Kumar Parakkad, with over 25 years of leadership experience across companies like Wipro, Voltas, and Videocon, brings strong strategic and operational expertise to Avanzo Cyber Security. As CEO, he drives the company’s growth with a disciplined, results-focused, and execution-driven leadership style.
-              </blockquote>
-            </div>
-            <div
-              class="rounded-lg border border-gray-200 bg-gray-50/80 backdrop-blur-sm p-8 hover-lift animate-on-scroll"
-              style="transition-delay: 300ms"
-            >
-              <div class="flex items-center">
-                <img
-                  class="h-12 w-12 rounded-full"
-                  src="images/pranav 1.png"
-                  alt="Emily Rodriguez"
-                />
-                <div class="ml-4">
-                  <p class="text-base font-semibold text-gray-900">
-                    Adv.Pattathil Pranav 
-                  </p>
-                  <p class="text-sm text-gray-600 font-sans">Director</p>
-                </div>
-              </div>
-              <blockquote class="mt-6 text-gray-700 font-sans">
-               As Director at Avanzo Cyber Security, Mr.Adv.Pattathil Pranav  leads the company’s compliance, privacy, and regulatory framework initiatives, ensuring clients meet evolving global data protection standards with clarity and confidence. Known for his sharp intellect, soft-spoken demeanor, and precise approach, he brings calm efficiency to complex compliance challenges, translating legal frameworks into practical and scalable cybersecurity solutions.
-              </blockquote>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- CTA and Footer Section -->
-      <div class="bg-gray-800">
-        <div class="mx-auto max-w-7xl px-6 py-16 text-center sm:py-20 lg:px-8">
-          <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            Ready to Secure Your Enterprise?
-          </h2>
-          <p class="mx-auto mt-4 max-w-2xl text-lg leading-8 text-gray-300">
-            Start your free trial today and experience enterprise-grade
-            cybersecurity.
-          </p>
-          <div class="mt-10 flex items-center justify-center gap-x-6">
-            <!-- <a
-              href="#"
-              class="rounded-md bg-white px-4 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 hover-lift"
-              >Start Free Trial</a
-            > -->
-            <a
-              href="consultation.html"
-              class="rounded-md border border-white/50 px-4 py-2.5 text-sm font-semibold text-white hover:border-white hover-lift"
-              >Get Consultation                
-              </a
-            >
-          </div>
-        </div>
-        <footer class="bg-gray-900">
-          <div class="mx-auto max-w-7xl overflow-hidden px-6 py-12 lg:px-8">
-            <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
-              <div class="col-span-2 md:col-span-1">
-                <a href="#" class="text-lg font-bold text-white">Avanzo</a>
-                <p class="mt-4 text-sm leading-6 text-gray-400">
-                  Advanced cybersecurity solutions for modern enterprises.
-                </p>
-              </div>
-              <div>
-                <h3 class="text-sm font-semibold leading-6 text-white">
-                  Products
-                </h3>
-                <ul role="list" class="mt-6 space-y-4">
-                  <li>
-                    <a
-                      href="cybersol.html"
-                      class="text-sm leading-6 text-gray-400 hover:text-white"
-                    >
-                      CYBERSOL
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="https://play.google.com/store/search?q=cyberhulk&c=apps"
-                      target="_blank"
-                      class="text-sm leading-6 text-gray-400 hover:text-white"
-                    >
-                      CYBERHULK
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="https://myciso.avanzosolutions.in/"
-                      target="_blank"
-                      class="text-sm leading-6 text-gray-400 hover:text-white"
-                    >
-                      MYCISO
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h3 class="text-sm font-semibold leading-6 text-white">
-                  Company
-                </h3>
-                <ul role="list" class="mt-6 space-y-4">
-                  <li>
-                    <a
-                      href="https://avanzo.co.in/about.html"
-                      class="text-sm leading-6 text-gray-400 hover:text-white"
-                      >About</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="contact.html"
-                      class="text-sm leading-6 text-gray-400 hover:text-white"
-                      >Contact</a
-                    >
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h3 class="text-sm font-semibold leading-6 text-white">
-                  Support
-                </h3>
-                <ul role="list" class="mt-6 space-y-4">
-                  <li>
-                    <a
-                      href="contact.html"
-                      class="text-sm leading-6 text-gray-400 hover:text-white"
-                      >Help Center</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="mt-10 border-t border-white/10 pt-8">
-              <p class="text-center text-xs leading-5 text-gray-400">
-                &copy; 2025 Avanzo Solutions. All rights reserved.
-              </p>
-            </div>
-          </div>
-        </footer>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="brand" aria-label="Avanzo Solutions home">
+        <img src="images/logo.png" alt="Avanzo Solutions" />
+      </a>
+      <nav class="nav" aria-label="Main">
+        <a class="link" href="#process">How We Work</a>
+        <a class="link" href="product.html">Products</a>
+        <a class="link" href="client.html">Clients</a>
+        <a class="link" href="https://avanzo.co.in/about.html">About</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn btn-outline" href="contact.html">Contact</a>
+        <a class="btn btn-dark" href="consultation.html">Get Consultation</a>
       </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+        <i class="fa-solid fa-bars"></i>
+      </button>
     </div>
+  </header>
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
+    <a class="link" href="#process">How We Work</a>
+    <a class="link" href="product.html">Products</a>
+    <a class="link" href="client.html">Clients</a>
+    <a class="link" href="https://avanzo.co.in/about.html">About</a>
+    <a class="link" href="contact.html">Contact</a>
+    <a class="btn btn-dark" href="consultation.html">Get Consultation</a>
+  </nav>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("is-visible");
-                observer.unobserve(entry.target); 
-              }
-            });
-          },
-          {
-            threshold: 0.1, 
-          }
-        );
+  <div class="page">
+    <!-- HERO -->
+    <section class="hero3d" id="hero">
+      <div class="container">
+        <span class="eyebrow">Avanzo Cyber Security Solutions</span>
+        <h1>The New Standard<br />in <span class="grad">Cyber Defence</span></h1>
+        <p class="hero3d-lead"><strong>Intelligence driven. Expert led.</strong><br />We find, stop and investigate cyber threats, so your data, operations and reputation stay protected.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="consultation.html">Get Consultation <i class="fa-solid fa-arrow-right"></i></a>
+          <a class="btn btn-ghost" href="#products">Explore Products</a>
+        </div>
+        <!-- Shown only when 3D is unavailable -->
+        <div class="hero-fallback" id="heroFallback" aria-hidden="true"></div>
+      </div>
+      <a class="hero3d-scroll" href="#process">Scroll to discover our process</a>
+    </section>
 
-        const elementsToAnimate =
-          document.querySelectorAll(".animate-on-scroll");
-        elementsToAnimate.forEach((el) => {
-          observer.observe(el);
+    <!-- Scroll room for the emblem to draw itself -->
+    <section class="emblem-spacer" id="emblemSpacer" aria-hidden="true"></section>
+
+    <!-- PROCESS (pinned while the 3D scene changes per step) -->
+    <section class="flow" id="process">
+      <div class="flow-sticky">
+        <div class="container">
+          <div class="flow-col">
+            <span class="eyebrow">Our process</span>
+            <h2 class="flow-title">From first call to full protection, in four steps.</h2>
+            <div class="flow-steps">
+              <div class="flow-step active">
+                <div class="track"><i class="fill"></i></div>
+                <div class="flow-head"><span class="flow-num">01</span><h3>Assess your exposure</h3></div>
+                <div class="flow-body"><p><span>We map your systems, data and people to find out where you are vulnerable and what an attack would actually cost you.</span></p></div>
+              </div>
+              <div class="flow-step">
+                <div class="track"><i class="fill"></i></div>
+                <div class="flow-head"><span class="flow-num">02</span><h3>Fortify the gaps</h3></div>
+                <div class="flow-body"><p><span>We harden endpoints, networks and access, and put the right controls and policies in place for your business.</span></p></div>
+              </div>
+              <div class="flow-step">
+                <div class="track"><i class="fill"></i></div>
+                <div class="flow-head"><span class="flow-num">03</span><h3>Monitor around the clock</h3></div>
+                <div class="flow-body"><p><span>Continuous monitoring and threat alerts mean suspicious activity is spotted early, before it becomes an incident.</span></p></div>
+              </div>
+              <div class="flow-step">
+                <div class="track"><i class="fill"></i></div>
+                <div class="flow-head"><span class="flow-num">04</span><h3>Respond and investigate</h3></div>
+                <div class="flow-body"><p><span>If an attack happens, we contain it, recover your operations and investigate what happened, with legal and technical support.</span></p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="after-flow">
+      <!-- FEATURES -->
+      <section class="section features" id="services">
+        <div class="container">
+          <div class="features-head reveal">
+            <div>
+              <span class="eyebrow">What we do</span>
+              <h2 class="section-title">Built for today's threats,<br />beyond checkbox security.</h2>
+            </div>
+            <a class="btn btn-dark" href="consultation.html">Talk to an expert <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div class="feature-grid">
+            <div class="feature reveal">
+              <div class="icon"><i class="fa-solid fa-shield-halved"></i></div>
+              <h3>Threat Detection</h3>
+              <p>Detect malware, phishing and ransomware early, with real-time alerts and automated response.</p>
+            </div>
+            <div class="feature reveal">
+              <div class="icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+              <h3>Cybercrime Investigation</h3>
+              <p>Expert investigation of fraud, breaches and online crime, led by over two decades of field experience.</p>
+            </div>
+            <div class="feature reveal">
+              <div class="icon"><i class="fa-solid fa-scale-balanced"></i></div>
+              <h3>Compliance &amp; Privacy</h3>
+              <p>Meet data protection regulations with practical frameworks that turn legal requirements into clear controls.</p>
+            </div>
+            <div class="feature reveal">
+              <div class="icon"><i class="fa-solid fa-headset"></i></div>
+              <h3>24/7 Expert Support</h3>
+              <p>Round-the-clock support and incident response from a team that knows your environment.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRODUCTS -->
+      <section class="section products" id="products">
+        <div class="container">
+          <div class="reveal">
+            <span class="eyebrow">Our products</span>
+            <h2 class="section-title">Security tools for every size of business.</h2>
+            <p class="section-lead">From a free awareness app to complete enterprise protection.</p>
+          </div>
+          <div class="product-grid">
+            <a class="product reveal" href="cybersol.html">
+              <div class="product-logo"><img src="images/product.png" alt="CyberSol logo" loading="lazy" /></div>
+              <div class="product-body">
+                <span class="kind">Complete protection</span>
+                <h3>CyberSol</h3>
+                <p>A comprehensive cybersecurity solution that protects sensitive data, supports compliance, keeps operations running and safeguards your reputation.</p>
+                <span class="more">Learn more <i class="fa-solid fa-arrow-right"></i></span>
+              </div>
+            </a>
+            <a class="product reveal" href="https://cyberhulk.avanzosolutions.in/" target="_blank" rel="noopener">
+              <div class="product-logo"><img src="images/Cyber Hulk Logo with Box.png" alt="Cyber Hulk logo" loading="lazy" /></div>
+              <div class="product-body">
+                <span class="kind">Free app</span>
+                <h3>Cyber Hulk</h3>
+                <p>A free, easy-to-use app with real-time threat alerts, a password strength checker, a network scanner and up-to-date security guides.</p>
+                <span class="more">Learn more <i class="fa-solid fa-arrow-right"></i></span>
+              </div>
+            </a>
+            <a class="product reveal" href="https://myciso.avanzosolutions.in/" target="_blank" rel="noopener">
+              <div class="product-logo"><img src="images/myciso png.png" alt="MyCISO logo" loading="lazy" /></div>
+              <div class="product-body">
+                <span class="kind">Endpoint protection</span>
+                <h3>MyCISO</h3>
+                <p>Advanced endpoint protection with real-time monitoring and machine learning that stops malware, ransomware and zero-day exploits.</p>
+                <span class="more">Learn more <i class="fa-solid fa-arrow-right"></i></span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- STANDARDS BAND -->
+      <section class="standards">
+        <div class="container">
+          <div class="standards-card reveal">
+            <div style="position: relative; z-index: 1;">
+              <h2>Investigation-grade expertise behind every engagement.</h2>
+              <p>Founded by India's first woman cybercrime investigator, Avanzo brings real investigative, legal and technical depth to protecting your business.</p>
+              <a class="btn" href="client.html">See who trusts us <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="stat-list">
+              <div class="stat"><strong>Since 2003</strong><span>working in cybersecurity and cybercrime</span></div>
+              <div class="stat"><strong>Legal + Technical</strong><span>investigation, compliance and recovery under one roof</span></div>
+              <div class="stat"><strong>24/7</strong><span>support and incident response</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LEADERSHIP -->
+      <section class="section leaders" id="leadership">
+        <div class="container">
+          <div class="reveal">
+            <span class="eyebrow">Leadership</span>
+            <h2 class="section-title">Led by people who have done the work.</h2>
+          </div>
+          <div class="leader-grid">
+            <div class="leader reveal">
+              <div class="leader-top">
+                <img src="images/testimonial2.png" alt="Dr. Pattathil Dhanya Menon" loading="lazy" />
+                <div><strong>Dr. Pattathil Dhanya Menon</strong><span>Founder</span></div>
+              </div>
+              <p>India's first woman cybercrime investigator, committed to cybersecurity since 2003. Her passion for innovation and justice in the digital world continues to inspire professionals across the country.</p>
+            </div>
+            <div class="leader reveal">
+              <div class="leader-top">
+                <img src="images/testimonial1.png" alt="Ajith Kumar Parakkat" loading="lazy" />
+                <div><strong>Ajith Kumar Parakkat</strong><span>CEO</span></div>
+              </div>
+              <p>Over 25 years of leadership at companies including Wipro, Voltas and Videocon. He drives Avanzo's growth with a disciplined, results-focused leadership style.</p>
+            </div>
+            <div class="leader reveal">
+              <div class="leader-top">
+                <img src="images/pranav 1.png" alt="Adv. Pattathil Pranav" loading="lazy" />
+                <div><strong>Adv. Pattathil Pranav</strong><span>Director</span></div>
+              </div>
+              <p>Leads compliance, privacy and regulatory initiatives, translating legal frameworks into practical, scalable cybersecurity solutions for clients.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="section" id="faq">
+        <div class="container faq-layout">
+          <div class="reveal">
+            <span class="eyebrow">FAQ</span>
+            <h2 class="section-title">How we work, and what to expect.</h2>
+            <p class="section-lead">Can't find your answer? <a href="contact.html" style="color: var(--blue); font-weight: 600;">Contact our team</a>.</p>
+          </div>
+          <div class="reveal">
+            <details class="faq-item" open>
+              <summary>What happens in a consultation? <i class="fa-solid fa-chevron-down"></i></summary>
+              <p class="answer">You tell us about your issue or concern, and we connect you with the right experts: our founder, or our legal, technical or psychology teams. Consultations are available at our Thrissur and Mangalore offices.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Can you help if we've already been attacked? <i class="fa-solid fa-chevron-down"></i></summary>
+              <p class="answer">Yes. We help contain the incident, recover your systems and investigate what happened, including the legal side of cybercrime cases.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Do you help with compliance and data privacy? <i class="fa-solid fa-chevron-down"></i></summary>
+              <p class="answer">Yes. Our compliance team helps you understand your obligations under data protection regulations and puts practical controls in place to meet them.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Which product is right for my business? <i class="fa-solid fa-chevron-down"></i></summary>
+              <p class="answer">Cyber Hulk is a free app for individuals and awareness. MyCISO protects your endpoints. CyberSol is our complete package for organisations. Book a consultation and we'll recommend the right fit.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Is Cyber Hulk really free? <i class="fa-solid fa-chevron-down"></i></summary>
+              <p class="answer">Yes. Cyber Hulk is free to download and includes threat alerts, a password strength checker, a network scanner and security guides.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="cta">
+        <div class="container reveal">
+          <h2>Secure your business before the next attack.</h2>
+          <p>Talk to our experts about your risks, and get a clear plan to protect what matters.</p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="consultation.html">Get Consultation <i class="fa-solid fa-arrow-right"></i></a>
+            <a class="btn btn-ghost" href="contact.html">Contact Us</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="site-footer">
+        <div class="container">
+          <div class="footer-grid">
+            <div class="footer-brand">
+              <strong>Avanzo Solutions</strong>
+              <p>Avanzo Cyber Security Solutions Pvt. Ltd. Your shield in the digital realm.</p>
+            </div>
+            <div>
+              <h4>Products</h4>
+              <ul>
+                <li><a href="cybersol.html">CyberSol</a></li>
+                <li><a href="https://cyberhulk.avanzosolutions.in/" target="_blank" rel="noopener">Cyber Hulk</a></li>
+                <li><a href="https://myciso.avanzosolutions.in/" target="_blank" rel="noopener">MyCISO</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4>Company</h4>
+              <ul>
+                <li><a href="https://avanzo.co.in/about.html">About</a></li>
+                <li><a href="client.html">Clients</a></li>
+                <li><a href="consultation.html">Consultation</a></li>
+                <li><a href="contact.html">Contact</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4>Get in touch</h4>
+              <ul>
+                <li><a href="tel:+917034109710"><i class="fa-solid fa-phone" style="width:18px"></i> +91 7034 1097 10</a></li>
+                <li><a href="tel:+917356111128"><i class="fa-solid fa-phone" style="width:18px"></i> +91 7356 1111 28</a></li>
+                <li><a href="mailto:info@avanzosolutions.in"><i class="fa-solid fa-envelope" style="width:18px"></i> info@avanzosolutions.in</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <span>&copy; <span id="year">2026</span> Avanzo Cyber Security Solutions Pvt. Ltd. All rights reserved.</span>
+            <span>Thrissur &middot; Mangalore</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Basic page behaviour (works with or without 3D) -->
+  <script>
+    (function () {
+      // Mobile menu
+      var toggle = document.getElementById("menuToggle");
+      var mobileNav = document.getElementById("mobileNav");
+      function setMenu(open) {
+        mobileNav.classList.toggle("open", open);
+        toggle.setAttribute("aria-expanded", open);
+        toggle.innerHTML = open ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+      }
+      toggle.addEventListener("click", function () { setMenu(!mobileNav.classList.contains("open")); });
+      mobileNav.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", function () { setMenu(false); }); });
+
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Static emblem, used when WebGL is not available
+      var R = 100, rot = 0, twist = 3.4, polys = "";
+      for (var i = 0; i < 22; i++) {
+        var pts = [];
+        for (var k = 0; k < 6; k++) {
+          var a = (-90 + rot + 60 * k) * Math.PI / 180;
+          pts.push((R * Math.cos(a)).toFixed(2) + "," + (R * Math.sin(a)).toFixed(2));
+        }
+        polys += '<polygon points="' + pts.join(" ") + '" stroke-width="' + (i ? 0.55 : 1.6) + '" stroke-opacity="' + (i ? (0.35 + 0.55 * i / 22).toFixed(2) : 1) + '"/>';
+        rot += twist;
+        R = R * Math.cos(Math.PI / 6) / Math.cos((30 - twist) * Math.PI / 180);
+      }
+      document.getElementById("heroFallback").innerHTML =
+        '<svg viewBox="-110 -110 220 220"><defs><linearGradient id="fg" gradientUnits="userSpaceOnUse" x1="-100" y1="-100" x2="100" y2="100">' +
+        '<stop offset="0" stop-color="#7fe0c0"/><stop offset=".55" stop-color="#cfd8ff"/><stop offset="1" stop-color="#6f93e6"/></linearGradient></defs>' +
+        '<g fill="none" stroke="url(#fg)">' + polys + '</g>' +
+        '<text x="0" y="4" text-anchor="middle" dominant-baseline="middle" font-family="Quicksand, sans-serif" font-weight="600" font-size="50" fill="#eef2ff">az</text></svg>';
+
+      // 3D tilt on the service cards (mouse only, skipped for reduced motion)
+      if (window.matchMedia("(hover: hover) and (pointer: fine)").matches &&
+          !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        document.querySelectorAll(".feature").forEach(function (card) {
+          card.addEventListener("pointerenter", function () {
+            card.style.transitionDelay = "0ms"; // drop the reveal stagger so the tilt feels instant
+            card.classList.add("tilting");
+          });
+          card.addEventListener("pointermove", function (e) {
+            var r = card.getBoundingClientRect();
+            var px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+            card.style.setProperty("--ry", ((px - 0.5) * 16).toFixed(2) + "deg");
+            card.style.setProperty("--rx", ((0.5 - py) * 16).toFixed(2) + "deg");
+            card.style.setProperty("--gx", (px * 100).toFixed(1) + "%");
+            card.style.setProperty("--gy", (py * 100).toFixed(1) + "%");
+          });
+          card.addEventListener("pointerleave", function () {
+            card.classList.remove("tilting");
+            card.style.setProperty("--rx", "0deg");
+            card.style.setProperty("--ry", "0deg");
+          });
         });
+      }
+
+      // Reveal sections on scroll
+      var els = document.querySelectorAll(".reveal");
+      if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        els.forEach(function (el) { el.classList.add("in"); });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            var idx = Array.prototype.indexOf.call(entry.target.parentNode.children, entry.target);
+            entry.target.style.transitionDelay = Math.min(idx, 4) * 80 + "ms";
+            entry.target.classList.add("in");
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      els.forEach(function (el) { io.observe(el); });
+    })();
+  </script>
+
+  <!-- 3D scene (Three.js) -->
+  <script type="module">
+/*
+ * Avanzo 3D hero scene (Three.js + Lenis smooth scroll)
+ *
+ * Scroll timeline
+ *   #hero          : twisted 3D hexagon tunnel rises into view, first lines draw
+ *   #emblemSpacer  : remaining lines draw, layers flatten into the emblem, "az" appears last
+ *   #process       : emblem moves aside; each of the 4 steps gets its own 3D effect
+ *                    01 scan ring · 02 shield frame · 03 orbit monitoring · 04 response pulses
+ *
+ * If WebGL is unavailable, the user prefers reduced motion, or anything here fails,
+ * the page keeps its static fallback (html never gets the "has-webgl" class).
+ */
+import * as THREE from "three";
+import { Line2 } from "three/addons/lines/Line2.js";
+import { LineMaterial } from "three/addons/lines/LineMaterial.js";
+import { LineGeometry } from "three/addons/lines/LineGeometry.js";
+
+const root = document.documentElement;
+const canvas = document.getElementById("webgl");
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function hasWebGL() {
+  try {
+    const c = document.createElement("canvas");
+    return !!(window.WebGLRenderingContext && (c.getContext("webgl2") || c.getContext("webgl")));
+  } catch (e) {
+    return false;
+  }
+}
+
+if (canvas && !reducedMotion && hasWebGL()) {
+  try {
+    init();
+  } catch (err) {
+    console.warn("3D scene disabled:", err);
+    root.classList.remove("has-webgl");
+  }
+}
+
+function init() {
+  const clamp01 = (v) => Math.min(1, Math.max(0, v));
+  const smooth = (t) => t * t * (3 - 2 * t);
+  const lerp = THREE.MathUtils.lerp;
+
+  // ---------------------------------------------------------------- renderer
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: "high-performance" });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setClearColor(0x000000, 0);
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 100);
+  camera.position.set(0, 0, 10);
+
+  root.classList.add("has-webgl");
+
+  // ---------------------------------------------------------------- helpers
+  const lineMaterials = [];
+  const C_TEAL = new THREE.Color("#7fe0c0");
+  const C_MID = new THREE.Color("#cfd8ff");
+  const C_BLUE = new THREE.Color("#6f93e6");
+  const tmp = new THREE.Color();
+
+  function gradColor(x, y, R) {
+    const k = clamp01(((x - y) / (2 * R)) * 0.5 + 0.5);
+    if (k < 0.55) return tmp.copy(C_TEAL).lerp(C_MID, k / 0.55);
+    return tmp.copy(C_MID).lerp(C_BLUE, (k - 0.55) / 0.45);
+  }
+
+  // Pointy-top hexagon outline, subdivided so it can be "drawn" smoothly
+  function hexPath(R, rot, segPerEdge) {
+    const pts = [];
+    for (let e = 0; e < 6; e++) {
+      const a0 = Math.PI / 2 + rot + (e * Math.PI) / 3;
+      const a1 = a0 + Math.PI / 3;
+      const x0 = R * Math.cos(a0), y0 = R * Math.sin(a0);
+      const x1 = R * Math.cos(a1), y1 = R * Math.sin(a1);
+      for (let s = 0; s < segPerEdge; s++) {
+        const t = s / segPerEdge;
+        pts.push(x0 + (x1 - x0) * t, y0 + (y1 - y0) * t, 0);
+      }
+    }
+    pts.push(pts[0], pts[1], pts[2]);
+    return pts;
+  }
+
+  function circlePath(R, n) {
+    const pts = [];
+    for (let i = 0; i <= n; i++) {
+      const a = (i / n) * Math.PI * 2;
+      pts.push(R * Math.cos(a), R * Math.sin(a), 0);
+    }
+    return pts;
+  }
+
+  function makeLine(positions, { width = 1, color = null } = {}) {
+    const geo = new LineGeometry();
+    geo.setPositions(positions);
+    let R = 0;
+    for (let i = 0; i < positions.length; i += 3) R = Math.max(R, Math.hypot(positions[i], positions[i + 1]));
+    const cols = [];
+    for (let i = 0; i < positions.length; i += 3) {
+      const c = color || gradColor(positions[i], positions[i + 1], R || 1);
+      cols.push(c.r, c.g, c.b);
+    }
+    geo.setColors(cols);
+    const mat = new LineMaterial({
+      linewidth: width,
+      vertexColors: true,
+      transparent: true,
+      opacity: 1,
+      depthTest: false,
+      depthWrite: false,
+    });
+    lineMaterials.push(mat);
+    const line = new Line2(geo, mat);
+    line.frustumCulled = false;
+    return line;
+  }
+
+  function radialTexture(stops) {
+    const c = document.createElement("canvas");
+    c.width = c.height = 64;
+    const x = c.getContext("2d");
+    const g = x.createRadialGradient(32, 32, 0, 32, 32, 32);
+    stops.forEach(([o, col]) => g.addColorStop(o, col));
+    x.fillStyle = g;
+    x.fillRect(0, 0, 64, 64);
+    return new THREE.CanvasTexture(c);
+  }
+
+  function beamTexture() {
+    // soft glowing band that fades out at the top, bottom and both ends
+    const c = document.createElement("canvas");
+    c.width = 256;
+    c.height = 128;
+    const x = c.getContext("2d");
+    const g = x.createLinearGradient(0, 0, 0, 128);
+    g.addColorStop(0, "rgba(127,224,192,0)");
+    g.addColorStop(0.5, "rgba(127,224,192,0.9)");
+    g.addColorStop(1, "rgba(127,224,192,0)");
+    x.fillStyle = g;
+    x.fillRect(0, 0, 256, 128);
+    x.globalCompositeOperation = "destination-in";
+    const h = x.createLinearGradient(0, 0, 256, 0);
+    h.addColorStop(0, "rgba(0,0,0,0)");
+    h.addColorStop(0.5, "rgba(0,0,0,1)");
+    h.addColorStop(1, "rgba(0,0,0,0)");
+    x.fillStyle = h;
+    x.fillRect(0, 0, 256, 128);
+    return new THREE.CanvasTexture(c);
+  }
+
+  async function azTexture() {
+    try {
+      await document.fonts.load('600 360px "Quicksand"');
+    } catch (e) { /* fall back to system font */ }
+    const c = document.createElement("canvas");
+    c.width = 1024;
+    c.height = 512;
+    const x = c.getContext("2d");
+    x.font = '600 360px "Quicksand", "Inter", sans-serif';
+    x.textAlign = "center";
+    x.textBaseline = "middle";
+    x.fillStyle = "#eef2ff";
+    x.shadowColor = "rgba(127,166,239,0.95)";
+    x.shadowBlur = 48;
+    x.fillText("az", 512, 250);
+    x.shadowBlur = 0;
+    x.fillText("az", 512, 250);
+    const t = new THREE.CanvasTexture(c);
+    t.colorSpace = THREE.SRGBColorSpace;
+    t.anisotropy = 4;
+    return t;
+  }
+
+  // ---------------------------------------------------------------- scene graph
+  //   rig (position / scale / step rotation)
+  //    ├─ tilt (3D tilt that flattens out)
+  //    │   ├─ spin (slow rotation) → hexagon layers + dark core
+  //    │   └─ "az" plane
+  //    └─ fx (orbits, scan ring, shield, pulses)
+  const rig = new THREE.Group();
+  const tilt = new THREE.Group();
+  const spin = new THREE.Group();
+  const fx = new THREE.Group();
+  scene.add(rig);
+  rig.add(tilt, fx);
+  tilt.add(spin);
+
+  // Twisted hexagon: each layer rotates a little and shrinks so its corners touch the previous edges
+  const N = 22, TWIST = (3.4 * Math.PI) / 180, SEG = 24, R0 = 2;
+  const layers = [];
+  let R = R0, rot = 0, innerR = R0, innerRot = 0;
+  for (let i = 0; i < N; i++) {
+    const line = makeLine(hexPath(R, rot, SEG), { width: i === 0 ? 2.2 : 1 });
+    line.renderOrder = 2;
+    line.geometry.instanceCount = 0;
+    spin.add(line);
+    layers.push({
+      line,
+      base: i === 0 ? 1 : 0.35 + 0.55 * (i / N),
+      segs: 6 * SEG,
+      z0: (i - (N - 1) / 2) * -0.2, // outer layers in front, inner layers deeper → tunnel
+    });
+    innerR = R;
+    innerRot = rot;
+    rot += TWIST;
+    R = (R * Math.cos(Math.PI / 6)) / Math.cos(Math.PI / 6 - TWIST);
+  }
+
+  // Dark core behind "az"
+  const coreShape = new THREE.Shape();
+  for (let k = 0; k < 6; k++) {
+    const a = Math.PI / 2 + innerRot + (k * Math.PI) / 3;
+    const px = innerR * 0.985 * Math.cos(a), py = innerR * 0.985 * Math.sin(a);
+    k === 0 ? coreShape.moveTo(px, py) : coreShape.lineTo(px, py);
+  }
+  const coreMat = new THREE.MeshBasicMaterial({ color: 0x0a1630, transparent: true, opacity: 0, depthTest: false, depthWrite: false });
+  const core = new THREE.Mesh(new THREE.ShapeGeometry(coreShape), coreMat);
+  core.renderOrder = 1;
+  spin.add(core);
+
+  // "az" mark
+  const azMat = new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, depthTest: false, depthWrite: false });
+  const az = new THREE.Mesh(new THREE.PlaneGeometry(innerR * 2.3, innerR * 1.15), azMat);
+  az.renderOrder = 3;
+  tilt.add(az);
+  azTexture().then((t) => {
+    azMat.map = t;
+    azMat.needsUpdate = true;
+  });
+
+  // Particle field (data / network dust)
+  const isSmall = window.innerWidth < 860;
+  const P = isSmall ? 700 : 1400;
+  const pPos = new Float32Array(P * 3);
+  for (let i = 0; i < P; i++) {
+    const r = 4 + Math.random() * 7;
+    const th = Math.random() * Math.PI * 2;
+    const ph = Math.acos(2 * Math.random() - 1);
+    pPos[i * 3] = r * Math.sin(ph) * Math.cos(th);
+    pPos[i * 3 + 1] = r * Math.sin(ph) * Math.sin(th) * 0.7;
+    pPos[i * 3 + 2] = -Math.abs(r * Math.cos(ph)) * 0.8 - 1;
+  }
+  const pGeo = new THREE.BufferGeometry();
+  pGeo.setAttribute("position", new THREE.BufferAttribute(pPos, 3));
+  const pMat = new THREE.PointsMaterial({
+    size: 0.06,
+    map: radialTexture([[0, "rgba(255,255,255,1)"], [0.4, "rgba(255,255,255,.5)"], [1, "rgba(255,255,255,0)"]]),
+    color: 0x9fb8ff,
+    transparent: true,
+    opacity: 0.6,
+    depthTest: false,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending,
+  });
+  const points = new THREE.Points(pGeo, pMat);
+  points.renderOrder = 0;
+  scene.add(points);
+
+  // Orbits with satellites (step 03 · monitoring)
+  const orbitDefs = [
+    { r: 2.9, rx: 1.25, ry: 0.1, rz: 0.25, speed: 0.35 },
+    { r: 3.3, rx: 1.05, ry: -0.5, rz: -0.35, speed: -0.25 },
+    { r: 2.55, rx: 1.42, ry: 0.6, rz: 0.7, speed: 0.5 },
+  ];
+  const satMatProto = { color: 0x7fe0c0, transparent: true, opacity: 0, depthTest: false, depthWrite: false };
+  const orbits = orbitDefs.map((d) => {
+    const pts = new THREE.EllipseCurve(0, 0, d.r, d.r, 0, Math.PI * 2).getPoints(180).map((p) => new THREE.Vector3(p.x, p.y, 0));
+    const mat = new THREE.LineDashedMaterial({ color: 0x9fb8ff, dashSize: 0.07, gapSize: 0.07, transparent: true, opacity: 0, depthTest: false, depthWrite: false });
+    const line = new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), mat);
+    line.computeLineDistances();
+    const sat = new THREE.Mesh(new THREE.SphereGeometry(0.05, 12, 12), new THREE.MeshBasicMaterial(satMatProto));
+    const holder = new THREE.Group();
+    holder.rotation.set(d.rx, d.ry, d.rz);
+    holder.add(line, sat);
+    fx.add(holder);
+    return { holder, mat, sat, d, angle: Math.random() * Math.PI * 2 };
+  });
+
+  // Scan ring + beam (step 01 · assess)
+  const scan = new THREE.Group();
+  const scanRing = makeLine(circlePath(2.6, 120), { width: 1.6, color: C_TEAL });
+  scanRing.rotation.x = Math.PI / 2 - 0.18;
+  const beamMat = new THREE.MeshBasicMaterial({ map: beamTexture(), transparent: true, opacity: 0, depthTest: false, depthWrite: false, blending: THREE.AdditiveBlending });
+  const beam = new THREE.Mesh(new THREE.PlaneGeometry(5.6, 0.5), beamMat);
+  scan.add(scanRing, beam);
+  fx.add(scan);
+
+  // Shield frame (step 02 · fortify)
+  const shieldGroup = new THREE.Group();
+  const shieldMat = new THREE.LineBasicMaterial({ color: 0x7fe0c0, transparent: true, opacity: 0, depthTest: false, depthWrite: false });
+  const shieldMat2 = new THREE.LineBasicMaterial({ color: 0x9fb8ff, transparent: true, opacity: 0, depthTest: false, depthWrite: false });
+  const shield = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.CylinderGeometry(2.45, 2.45, 1.1, 6, 1, true)), shieldMat);
+  const shield2 = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.CylinderGeometry(2.95, 2.95, 0.5, 6, 1, true)), shieldMat2);
+  shield.rotation.x = shield2.rotation.x = Math.PI / 2;
+  const shieldFillMat = new THREE.MeshBasicMaterial({ color: 0x5fc4a4, transparent: true, opacity: 0, depthTest: false, depthWrite: false });
+  const shieldFill = new THREE.Mesh(new THREE.CircleGeometry(2.45, 6), shieldFillMat);
+  shieldFill.rotation.z = Math.PI / 2;
+  shieldGroup.add(shieldFill, shield, shield2);
+  fx.add(shieldGroup);
+
+  // Response pulses (step 04 · respond)
+  const pulses = [0, 1, 2].map(() => {
+    const l = makeLine(hexPath(R0, 0, 6), { width: 1.4, color: C_TEAL });
+    fx.add(l);
+    return l;
+  });
+
+  // ---------------------------------------------------------------- DOM hooks
+  const hero = document.getElementById("hero");
+  const spacer = document.getElementById("emblemSpacer");
+  const flow = document.getElementById("process");
+  const caption = document.getElementById("emblemCaption");
+  const steps = Array.from(document.querySelectorAll(".flow-step"));
+  const fills = steps.map((s) => s.querySelector(".fill"));
+
+  // ---------------------------------------------------------------- smooth scroll (Lenis)
+  let lenis = null;
+  if (window.Lenis) {
+    lenis = new window.Lenis({ lerp: 0.1, smoothWheel: true });
+    document.querySelectorAll('a[href^="#"]').forEach((a) => {
+      a.addEventListener("click", (e) => {
+        const id = a.getAttribute("href");
+        if (id.length < 2) return;
+        const el = document.querySelector(id);
+        if (!el) return;
+        e.preventDefault();
+        lenis.scrollTo(el, { offset: id === "#process" ? 0 : -72 });
       });
-    </script>
-  </body>
+    });
+  }
+
+  // Click a process step to jump to it
+  steps.forEach((s, k) => {
+    s.addEventListener("click", () => {
+      const top = flow.getBoundingClientRect().top + window.scrollY;
+      const target = top + ((k + 0.5) / 4) * (flow.offsetHeight - window.innerHeight);
+      lenis ? lenis.scrollTo(target) : window.scrollTo({ top: target, behavior: "smooth" });
+    });
+  });
+
+  // ---------------------------------------------------------------- input + resize
+  const mouse = { x: 0, y: 0, tx: 0, ty: 0 };
+  window.addEventListener("pointermove", (e) => {
+    mouse.tx = (e.clientX / window.innerWidth) * 2 - 1;
+    mouse.ty = (e.clientY / window.innerHeight) * 2 - 1;
+  }, { passive: true });
+
+  let vw = 0, vh = 0, isMobile = false, baseZ = 10;
+  function resize() {
+    vw = window.innerWidth;
+    vh = window.innerHeight;
+    isMobile = vw < 860;
+    renderer.setSize(vw, vh, false);
+    camera.aspect = vw / vh;
+    // Pull the camera back on narrow screens so the emblem always fits
+    const halfTan = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
+    baseZ = Math.max(10, 2.5 / (halfTan * camera.aspect));
+    camera.updateProjectionMatrix();
+    lineMaterials.forEach((m) => m.resolution.set(vw, vh));
+  }
+  window.addEventListener("resize", resize);
+  resize();
+
+  // ---------------------------------------------------------------- loop
+  const stepRot = [[0, 0], [-0.25, 0.5], [0.3, -0.45], [-0.15, 0.3]];
+  const start = performance.now();
+  let last = start, time = 0, spinAngle = 0;
+
+  function updateFlowUI(flowP) {
+    const active = Math.min(3, Math.floor(flowP));
+    steps.forEach((s, k) => {
+      s.classList.toggle("active", k === active);
+      fills[k].style.transform = "scaleY(" + clamp01(flowP - k).toFixed(3) + ")";
+    });
+  }
+
+  function frame(now) {
+    requestAnimationFrame(frame);
+    if (lenis) lenis.raf(now);
+    const dt = Math.min((now - last) / 1000, 0.05);
+    last = now;
+    time += dt;
+
+    // Scroll progress for each phase
+    const heroP = clamp01(window.scrollY / Math.max(1, hero.offsetHeight));
+    const sr = spacer.getBoundingClientRect();
+    const spacerP = clamp01(-sr.top / Math.max(1, sr.height - vh));
+    const fr = flow.getBoundingClientRect();
+    const E = smooth(clamp01(1 - fr.top / vh)); // flow entering
+    const flowP = clamp01(-fr.top / Math.max(1, fr.height - vh)) * 4;
+
+    updateFlowUI(flowP);
+
+    const visible = fr.bottom > 0;
+    canvas.style.visibility = visible ? "visible" : "hidden";
+    if (!visible) return;
+
+    // Phase values
+    const intro = smooth(clamp01((now - start) / 1800));
+    const D = Math.max(intro * 0.16, clamp01(heroP * 0.25 + spacerP * 0.85)); // how much is drawn
+    const C = smooth(clamp01((spacerP - 0.3) / 0.45)); // tunnel → flat emblem
+    const A = smooth(clamp01((spacerP - 0.76) / 0.18)); // "az" reveal
+    const e = [0, 1, 2, 3].map((k) => clamp01(1.6 - Math.abs(flowP - (k + 0.5)) * 2.2) * E);
+
+    // Layout in world units (relative to what the camera can see)
+    camera.position.z = baseZ;
+    const hh = baseZ * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
+    const hw = hh * camera.aspect;
+    const h = smooth(heroP);
+    let x = 0;
+    let y = lerp(-0.95 * hh, 0, h);
+    let s = lerp(0.8, 0.85, h);
+    let G = 1; // global fade
+    if (isMobile) {
+      y = lerp(y, 0.3 * hh, E);
+      s = lerp(s, 0.75, E);
+      G = 1 - 0.65 * E;
+    } else {
+      x = lerp(0, hw * 0.42, E);
+      s = lerp(s, 0.8, E);
+    }
+    rig.position.set(x, y, 0);
+    rig.scale.setScalar(s);
+
+    // Rotate the whole emblem to a new angle for each process step
+    const fp = Math.min(3, Math.max(0, flowP - 0.5));
+    const i0 = Math.floor(fp), i1 = Math.min(3, i0 + 1), f = smooth(fp - i0);
+    rig.rotation.x = lerp(stepRot[i0][0], stepRot[i1][0], f) * E;
+    rig.rotation.y = lerp(stepRot[i0][1], stepRot[i1][1], f) * E;
+
+    // Mouse parallax
+    mouse.x += (mouse.tx - mouse.x) * 0.05;
+    mouse.y += (mouse.ty - mouse.y) * 0.05;
+
+    tilt.rotation.x = lerp(-0.5, 0, C) + mouse.y * 0.1;
+    tilt.rotation.y = lerp(0.5, 0, C) + mouse.x * 0.14 + Math.sin(time * 0.35) * 0.12 * (1 - C);
+    spinAngle += dt * 0.12 * (1 - A * 0.92);
+    spin.rotation.z = spinAngle;
+
+    // Hexagon layers draw one after another
+    const W = 5, total = N - 1 + W;
+    for (let i = 0; i < N; i++) {
+      const L = layers[i];
+      const local = smooth(clamp01((D * total - i) / W));
+      const count = Math.floor(local * L.segs);
+      L.line.geometry.instanceCount = count;
+      L.line.visible = count > 0;
+      L.line.position.z = L.z0 * (1 - C);
+      L.line.material.opacity = L.base * G * (0.8 + 0.2 * local);
+    }
+
+    // "az" and core
+    azMat.opacity = A * G;
+    az.scale.setScalar(0.72 + 0.28 * A);
+    coreMat.opacity = A * 0.65 * G;
+    caption.style.opacity = (smooth(clamp01((spacerP - 0.86) / 0.1)) * (1 - clamp01(E * 3))).toFixed(3);
+
+    // Orbits (always faint, bright on step 03)
+    const orbitBase = lerp(0.08, 0.2, C);
+    orbits.forEach((o) => {
+      o.angle += dt * o.d.speed * (1 + 2.5 * e[2]);
+      o.sat.position.set(Math.cos(o.angle) * o.d.r, Math.sin(o.angle) * o.d.r, 0);
+      o.holder.rotation.z += dt * 0.03;
+      o.mat.opacity = (orbitBase + 0.55 * e[2]) * G;
+      o.sat.material.opacity = (0.15 * C + 0.85 * e[2]) * G;
+      o.sat.scale.setScalar(1 + e[2]);
+    });
+
+    // 01 · scan
+    scan.visible = e[0] > 0.001;
+    scan.position.y = Math.sin(time * 1.2) * 1.9;
+    scanRing.material.opacity = e[0] * G;
+    beamMat.opacity = e[0] * 0.4 * G;
+
+    // 02 · shield
+    shieldGroup.visible = e[1] > 0.001;
+    shieldGroup.scale.setScalar(1.35 - 0.35 * e[1]);
+    shieldGroup.rotation.y = Math.sin(time * 0.6) * 0.3;
+    shieldGroup.rotation.x = Math.cos(time * 0.4) * 0.15;
+    shieldMat.opacity = e[1] * 0.85 * G;
+    shieldMat2.opacity = e[1] * 0.35 * G;
+    shieldFillMat.opacity = e[1] * 0.06 * G;
+
+    // 04 · pulses
+    pulses.forEach((p, k) => {
+      const fr2 = (time * 0.45 + k / 3) % 1;
+      p.visible = e[3] > 0.001;
+      p.scale.setScalar(1 + fr2 * 1.3);
+      p.material.opacity = (1 - fr2) * e[3] * 0.9 * G;
+    });
+
+    // Particles + camera
+    points.rotation.y = time * 0.02;
+    points.rotation.x = Math.sin(time * 0.1) * 0.05;
+    pMat.opacity = 0.6 * (isMobile ? 0.7 : 1);
+    camera.position.x = mouse.x * 0.4;
+    camera.position.y = -mouse.y * 0.25;
+    camera.lookAt(0, 0, 0);
+
+    renderer.render(scene, camera);
+  }
+  requestAnimationFrame(frame);
+}
+
+  </script>
+</body>
 </html>
