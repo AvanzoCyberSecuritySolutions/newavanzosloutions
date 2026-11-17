@@ -225,6 +225,19 @@
     .feature.reveal:not(.in) { opacity: 0; transform: perspective(900px) rotateX(-40deg) translateY(30px); }
     .feature.reveal.in { opacity: 1; transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry)) translateZ(var(--lift)); }
 
+    /* ============ ABOUT ============ */
+    .about { background: var(--bg); }
+    .about-layout { display: grid; grid-template-columns: 1fr 1.25fr; gap: 64px; align-items: start; }
+    .about-text p + p { margin-top: 16px; }
+    .about-text .section-lead { max-width: none; }
+    .about-list { display: grid; gap: 14px; }
+    .about-item { display: flex; gap: 16px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 22px; }
+    .about-item i { flex: none; width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; background: linear-gradient(135deg, var(--teal), var(--blue)); color: #fff; font-size: 16px; }
+    .about-item strong { display: block; font-family: "Raleway", sans-serif; font-size: 17px; }
+    .about-item strong span { font-family: "Inter", sans-serif; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-left: 8px; }
+    .about-item p { margin-top: 4px; color: var(--muted); font-size: 15px; }
+    @media (max-width: 900px) { .about-layout { grid-template-columns: 1fr; gap: 40px; } }
+
     /* ============ PRODUCTS ============ */
     .products { background: var(--navy-950); color: #fff; position: relative; overflow: hidden; }
     .products::before {
@@ -376,7 +389,7 @@
         <a class="link" href="#process">How We Work</a>
         <a class="link" href="product.html">Products</a>
         <a class="link" href="client.html">Clients</a>
-        <a class="link" href="https://avanzo.co.in/about.html">About</a>
+        <a class="link" href="#about">About</a>
       </nav>
       <div class="nav-actions">
         <a class="btn btn-outline" href="contact.html">Contact</a>
@@ -391,7 +404,7 @@
     <a class="link" href="#process">How We Work</a>
     <a class="link" href="product.html">Products</a>
     <a class="link" href="client.html">Clients</a>
-    <a class="link" href="https://avanzo.co.in/about.html">About</a>
+    <a class="link" href="#about">About</a>
     <a class="link" href="contact.html">Contact</a>
     <a class="btn btn-dark" href="consultation.html">Get Consultation</a>
   </nav>
@@ -482,6 +495,26 @@
               <h3>24/7 Expert Support</h3>
               <p>Round-the-clock support and incident response from a team that knows your environment.</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section class="section about" id="about">
+        <div class="container about-layout">
+          <div class="about-text reveal">
+            <span class="eyebrow">About our products</span>
+            <h2 class="section-title">One family of tools, built to keep you safe online.</h2>
+            <p class="section-lead">Avanzo builds security products for everyone, from individuals learning to stay safe online to organisations that need complete, compliant protection.</p>
+            <p class="section-lead">Each product draws on more than two decades of cybercrime investigation experience, so it is designed around how real attacks happen and how real investigations work.</p>
+          </div>
+          <div class="about-list reveal">
+            <div class="about-item"><i class="fa-solid fa-shield-halved"></i><div><strong>CyberSol<span>Complete protection</span></strong><p>Our all-in-one package for organisations. It protects sensitive data, supports compliance and keeps operations running.</p></div></div>
+            <div class="about-item"><i class="fa-solid fa-mobile-screen"></i><div><strong>Cyber Hulk<span>Free app</span></strong><p>Threat alerts, a password checker, a network scanner and security guides, free for anyone.</p></div></div>
+            <div class="about-item"><i class="fa-solid fa-laptop-code"></i><div><strong>MyCISO<span>Endpoint protection</span></strong><p>Real-time monitoring and machine learning that stop malware, ransomware and zero-day exploits on your devices.</p></div></div>
+            <div class="about-item"><i class="fa-solid fa-magnifying-glass"></i><div><strong>ScanOn<span>Launching soon</span></strong><p>Checks phones and laptops for viruses, malware and hidden apps at the service counter.</p></div></div>
+            <div class="about-item"><i class="fa-solid fa-file-shield"></i><div><strong>Archiva<span>Launching soon</span></strong><p>Gives every document a unique ID so it can be traced to its source and cannot be duplicated.</p></div></div>
+            <div class="about-item"><i class="fa-solid fa-satellite-dish"></i><div><strong>Vaelon<span>In development</span></strong><p>Turns publicly available information into intelligence that investigators can act on.</p></div></div>
           </div>
         </div>
       </section>
@@ -668,7 +701,7 @@
             <div>
               <h4>Company</h4>
               <ul>
-                <li><a href="https://avanzo.co.in/about.html">About</a></li>
+                <li><a href="#about">About</a></li>
                 <li><a href="client.html">Clients</a></li>
                 <li><a href="consultation.html">Consultation</a></li>
                 <li><a href="contact.html">Contact</a></li>
